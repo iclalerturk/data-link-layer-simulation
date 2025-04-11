@@ -47,3 +47,26 @@ ACK doğru geldiyse → Bir sonraki frame’e geç.
 
 ACK gelmezse → timeout beklenir → tekrar gönderilir.
 
+ 1. İletim çizgisi kesilerek
+Gönderici'den çıkan ok ➝ yarıda kesilir, alıcıya ulaşmaz.
+
+Üzerine "Veri kayboldu" veya "Timeout" yazısı eklenebilir.
+
+Fade/Opaklık Animasyonu
+Frame’in yolda giderken şeffaflaşması (fade out) → veri buharlaşmış gibi görünür.
+
+ 3. Çarpı (❌) veya Kırmızı Uyarı İkonu
+Gönderici → veri gönderiyor animasyonu başlar, bir anda ❌ çıkıp “Frame lost” yazısı belirir.
+Kullanıcı, bu animasyonla veri kaybını sezgisel olarak anlar.
+
+4. Geri Sayaç (Timeout) + Yeniden Gönderme
+Kaybolan frame için GUI'de “ACK bekleniyor...”
+
+Belirli süre geçince: “Timeout! Frame tekrar gönderiliyor...”
+
+🎯 5. Renk Kodu Kullanımı
+Yeşil: Başarıyla iletildi
+
+Kırmızı: Bozuldu
+
+Gri veya soluk renk: Kayboldu (alıcıya hiç ulaşmadı)
