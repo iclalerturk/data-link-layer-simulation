@@ -1,0 +1,49 @@
+Temel Yapı (Stop&Wait + GUI)
+Arayüzde 3 temel bölge öneriyorum:
+
+1. Gönderici (Sender) Paneli
+Şu an hangi frame’in gönderildiği
+
+Gönderilen frame’in içeriği
+
+Gönderilen frame’in CRC’si
+
+2. İletim Hattı (Simülasyon Alanı)
+Frame yolda ilerliyor animasyonu
+
+Frame bozulursa kırmızı ikonla göster
+
+Frame kaybolursa animasyon yarıda kesilsin
+
+ACK cevabı gelirse yeşil “✔” ikon, gelmezse kırmızı “X” ile göster
+
+3. Alıcı (Receiver) Paneli
+Hangi frame alındı?
+
+CRC kontrol sonucu: doğru mu, bozuk mu?
+
+ACK cevabı gönderildi mi?
+
+🔁 Stop&Wait Döngüsü
+Her frame için:
+
+Gönderici frame’i hazırlar.
+
+GUI’de “Frame gönderiliyor...” animasyonu başlar.
+
+Rastgele hata kontrolü yapılır:
+
+%10: Frame hiç gitmez → “Yolda kayboldu” mesajı göster.
+
+%20: Frame bozulur → Alıcı “CRC failed” der, ACK göndermez.
+
+%15: ACK gelse bile göndericiye ulaşmaz.
+
+%5: (Tüm veri bittikten sonra) checksum gönderilir ama hatalı iletilir.
+
+Frame hatasız geldiyse → ACK döner.
+
+ACK doğru geldiyse → Bir sonraki frame’e geç.
+
+ACK gelmezse → timeout beklenir → tekrar gönderilir.
+
