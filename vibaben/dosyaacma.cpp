@@ -4,13 +4,17 @@
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QPropertyAnimation>
+#include <QGraphicsOpacityEffect>
+#include <QVBoxLayout>
+#include <QTimer>
+#include <QDebug>
 
 DosyaAcma::DosyaAcma(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DosyaAcma)
 {
     ui->setupUi(this);
-
 }
 
 DosyaAcma::~DosyaAcma()
@@ -36,11 +40,158 @@ void DosyaAcma::on_btn_dosyaAc_clicked()
     }
 }
 
-
 void DosyaAcma::on_pushButton_clicked()
 {
     hide();
-    frameEkrani =new FrameEkrani(this);
+    frameEkrani = new FrameEkrani(this);
     frameEkrani->show();
 }
 
+std::vector<bool> readFileAsBits(const QString& path) {
+    QFile file(path);
+    std::vector<bool> bits;
+
+    if (!file.open(QIODevice::ReadOnly)) return bits;
+
+    QByteArray data = file.readAll();
+    for (unsigned char byte : data) {
+        for (int i = 7; i >= 0; --i) {
+            bits.push_back((byte >> i) & 1);
+        }
+    }
+
+    return bits;
+}
+
+void DosyaAcma::showNextFrame()
+{
+
+    if (currentFrameIndex >= frames.size()) {
+        animTimer->stop();
+        ui->labelTitle->setText("✔ Tüm frameler gösterildi.");
+        return;
+    }
+
+
+    QString frameStr;
+    for (bool bit : frames[currentFrameIndex])
+        frameStr += bit ? "1" : "0";
+
+    ui->labelFrame->setText(QString("🧱 Frame %1:\n%2").arg(currentFrameIndex + 1).arg(frameStr));
+    currentFrameIndex++;
+}
+
+std::vector<std::vector<bool>> splitIntoFrames(const std::vector<bool>& bits, int frameSize = 100) {
+    std::vector<std::vector<bool>> frames;
+    for (size_t i = 0; i < bits.size(); i += frameSize) {
+        std::vector<bool> frame;
+        for (size_t j = i; j < i + frameSize && j < bits.size(); ++j)
+            frame.push_back(bits[j]);
+        while (frame.size() < frameSize)
+            frame.push_back(0); // padding
+        frames.push_back(frame);
+    }
+    return frames;
+}
+
+// Gerekli değişkenlerin tanımlamaları
+QList<QList<bool>> frames;  // Veriyi parçalara ayıran frame listesi
+int currentFrameIndex = 0;  // Şu anki frame indeksi
+int currentVisualFrameIndex = 0;  // Görsel frame animasyon indeksi
+QTimer *animTimer = nullptr;  // Animasyon için zamanlayıcı
+
+QStringList frameStrings;
+void DosyaAcma::showNextVisualFrame()
+{
+    if (currentVisualFrameIndex >= frameStrings.size()) {
+        animTimer->stop();
+        ui->labelTitle->setText("✔ Tüm frameler animasyonla oluşturuldu.");
+        return;
+    }
+
+    QString currentFrameText = frameStrings[currentVisualFrameIndex];
+    ui->labelFrame->setText(QString("Frame %1:\n%2").arg(currentVisualFrameIndex + 1).arg(currentFrameText));
+    QLabel *lbl = new QLabel(ui->frameContainer);
+    lbl->setText(QString("🔹 Frame %1: %2")
+                     .arg(currentVisualFrameIndex + 1)
+                     .arg(currentFrameText.left(100)));
+
+    lbl->setStyleSheet("background-color: #e1f5fe; border: 1px solid #0288d1; padding: 8px; font-family: monospace; color: black");
+    lbl->setAlignment(Qt::AlignLeft);
+
+    // Önce layout'a ekle ve göster
+    ui->frameContainer->layout()->addWidget(lbl);
+    lbl->show();  // geometry() için gerekli
+
+
+    // Opacity efekti
+    QGraphicsOpacityEffect *opacityEffect = new QGraphicsOpacityEffect(lbl);
+    lbl->setGraphicsEffect(opacityEffect);
+    opacityEffect->setOpacity(0);
+
+    QPropertyAnimation *fadeAnim = new QPropertyAnimation(opacityEffect, "opacity");
+    fadeAnim->setDuration(600);
+    fadeAnim->setStartValue(0);
+    fadeAnim->setEndValue(1);
+    fadeAnim->start(QAbstractAnimation::DeleteWhenStopped);
+
+    // Slide-in animasyonu
+    QRect endRect = lbl->geometry();
+    QRect startRect = endRect;
+    startRect.moveLeft(startRect.left() + 200);
+    lbl->setGeometry(startRect);
+
+    QPropertyAnimation *slideAnim = new QPropertyAnimation(lbl, "geometry");
+    slideAnim->setDuration(600);
+    slideAnim->setStartValue(startRect);
+    slideAnim->setEndValue(endRect);
+    slideAnim->start(QAbstractAnimation::DeleteWhenStopped);
+
+    qDebug() << "Animasyon Başlatıldı: Frame " << currentVisualFrameIndex + 1;
+
+    currentVisualFrameIndex++;
+}
+void DosyaAcma::on_pushButton_2_clicked()
+{
+    auto bits = readFileAsBits(ui->lineEdit_dosyaYolu->text());
+    frames = splitIntoFrames(bits, 100);
+
+    frameStrings.clear();
+    for (const auto& frame : frames) {
+        QString frameStr;
+        for (bool bit : frame) {
+            frameStr += bit ? "1" : "0";
+        }
+        frameStrings.append(frameStr);
+        currentFrameIndex++;
+    }
+
+    ui->labelTitle->setText(QString("Toplam %1 frame oluşturuldu").arg(frames.size()));
+    QString allData = frameStrings.join("");
+    ui->labelAnaVeri->setText("🧱 Veri Bloğu:\n" + allData.left(300));
+
+
+    // Layout kontrolü
+    if (!ui->frameContainer->layout()) {
+        QVBoxLayout *layout = new QVBoxLayout(ui->frameContainer);
+        ui->frameContainer->setLayout(layout);
+    }
+
+    // Önceki QLabel'ları sil
+    auto children = ui->frameContainer->findChildren<QLabel*>();
+    for (QLabel *child : children)
+        child->deleteLater();
+
+    currentVisualFrameIndex = 0;
+
+    // Zamanlayıcıyı yeniden başlat
+    if (animTimer) {
+        animTimer->stop();
+        delete animTimer;
+        animTimer = nullptr;
+    }
+
+    animTimer = new QTimer(this);
+    connect(animTimer, &QTimer::timeout, this, &DosyaAcma::showNextVisualFrame);
+    animTimer->start(500);
+}

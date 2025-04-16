@@ -2,6 +2,8 @@
 #define DOSYAACMA_H
 #include "frameekrani.h"
 #include <QDialog>
+#include <QTimer>
+#include <vector>
 
 namespace Ui {
 class DosyaAcma;
@@ -20,9 +22,19 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void showNextFrame();
+    void showNextVisualFrame();
+
 private:
     Ui::DosyaAcma *ui;
     FrameEkrani *frameEkrani;
+    std::vector<std::vector<bool>> frames;
+    int currentFrameIndex = 0;
+    QTimer *timer;
+    QTimer *animTimer = nullptr;
+
 };
 
 #endif // DOSYAACMA_H
