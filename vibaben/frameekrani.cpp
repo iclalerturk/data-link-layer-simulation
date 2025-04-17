@@ -30,6 +30,18 @@ FrameEkrani::FrameEkrani(QWidget *parent) :
     gonderButonu->setGeometry(220, 30, 160, 40);
     connect(gonderButonu, &QPushButton::clicked, this, &FrameEkrani::gonderFrame);
 
+    gonderButonu->setStyleSheet(
+        "QPushButton {"
+        " background-color: #1746A2;"
+        //" color: white;"
+        //" font-size: 20px;"
+        " border-radius: 20px;"
+        " }"
+        "QPushButton:hover {"
+        " background-color: #3567d1;"
+        " }"
+        );
+
     ackTimer = new QTimer(this);
     connect(ackTimer, &QTimer::timeout, this, &FrameEkrani::kontrolEt);
 }

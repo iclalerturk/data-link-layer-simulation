@@ -32,6 +32,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         frameekrani.h frameekrani.cpp frameekrani.ui
         dosyaacma.h dosyaacma.cpp dosyaacma.ui
 
+        images.qrc
+
 
 
 

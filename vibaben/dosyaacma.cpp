@@ -24,7 +24,7 @@ DosyaAcma::DosyaAcma(QWidget *parent)
     QWidget *scrollContent = new QWidget();
     QVBoxLayout *scrollLayout = new QVBoxLayout(scrollContent);
     scrollLayout->setAlignment(Qt::AlignTop);
-    scrollLayout->setContentsMargins(2, 2, 2, 2);  // Small margins
+    scrollLayout->setContentsMargins(0, 0, 0, 0);  // Small margins
 
     // Set the scroll content widget
     scrollArea->setWidget(scrollContent);
@@ -37,6 +37,40 @@ DosyaAcma::DosyaAcma(QWidget *parent)
     ui->labelAnaVeri->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     // Metni HTML olarak ayarlayarak daha iyi kontrol sağlayabilirsiniz
 
+
+    ui->btn_dosyaAc->setStyleSheet(
+        "QPushButton {"
+        " background-color: #1746A2;"
+        //" color: white;"
+        //" font-size: 20px;"
+        " border-radius: 20px;"
+        " }"
+        "QPushButton:hover {"
+        " background-color: #3567d1;"
+        " }"
+        );
+    ui->pushButton->setStyleSheet(
+        "QPushButton {"
+        " background-color: #1746A2;"
+        //" color: white;"
+        //" font-size: 20px;"
+        " border-radius: 20px;"
+        " }"
+        "QPushButton:hover {"
+        " background-color: #3567d1;"
+        " }"
+        );
+    ui->pushButton_2->setStyleSheet(
+        "QPushButton {"
+        " background-color: #1746A2;"
+        //" color: white;"
+        //" font-size: 20px;"
+        " border-radius: 20px;"
+        " }"
+        "QPushButton:hover {"
+        " background-color: #3567d1;"
+        " }"
+        );
 }
 
 DosyaAcma::~DosyaAcma()
