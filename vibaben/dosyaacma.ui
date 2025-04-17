@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1024</width>
+    <height>640</height>
    </rect>
   </property>
   <property name="palette">
@@ -497,10 +497,10 @@
   <widget class="QPushButton" name="btn_dosyaAc">
    <property name="geometry">
     <rect>
-     <x>610</x>
-     <y>80</y>
-     <width>101</width>
-     <height>31</height>
+     <x>600</x>
+     <y>70</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
@@ -538,45 +538,47 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>630</x>
-     <y>360</y>
-     <width>131</width>
-     <height>131</height>
+     <x>760</x>
+     <y>100</y>
+     <width>231</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>20</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Dosyayı Göndermeye Başla</string>
+    <string>Dosyayı Göndermeye
+Başla</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>130</y>
-     <width>601</width>
-     <height>71</height>
+     <x>760</x>
+     <y>10</y>
+     <width>231</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>20</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Veriyi Framelere Böl</string>
+    <string>Veriyi
+Framelere Böl</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelFrame">
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>260</y>
-     <width>421</width>
+     <y>200</y>
+     <width>681</width>
      <height>51</height>
     </rect>
    </property>
@@ -605,7 +607,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>260</y>
+     <y>200</y>
      <width>231</width>
      <height>51</height>
     </rect>
@@ -635,7 +637,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>230</y>
+     <y>160</y>
      <width>131</width>
      <height>31</height>
     </rect>
@@ -653,7 +655,7 @@
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>230</y>
+     <y>160</y>
      <width>191</width>
      <height>31</height>
     </rect>
@@ -670,23 +672,26 @@
   <widget class="QLabel" name="labelAnaVeri">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>340</y>
-     <width>351</width>
-     <height>151</height>
+     <x>40</x>
+     <y>280</y>
+     <width>271</width>
+     <height>321</height>
     </rect>
    </property>
    <property name="text">
     <string>TextLabel</string>
    </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QWidget" name="frameContainer" native="true">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>320</y>
-     <width>321</width>
-     <height>181</height>
+     <x>360</x>
+     <y>280</y>
+     <width>631</width>
+     <height>331</height>
     </rect>
    </property>
   </widget>

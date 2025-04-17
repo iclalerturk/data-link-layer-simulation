@@ -9,12 +9,34 @@
 #include <QVBoxLayout>
 #include <QTimer>
 #include <QDebug>
-
+#include <Qscrollarea.h>
+#include <QScrollBar>
 DosyaAcma::DosyaAcma(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DosyaAcma)
 {
     ui->setupUi(this);
+    // Create and setup the scroll area
+    scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);
+
+    // Create a container widget for the scroll area
+    QWidget *scrollContent = new QWidget();
+    QVBoxLayout *scrollLayout = new QVBoxLayout(scrollContent);
+    scrollLayout->setAlignment(Qt::AlignTop);
+    scrollLayout->setContentsMargins(2, 2, 2, 2);  // Small margins
+
+    // Set the scroll content widget
+    scrollArea->setWidget(scrollContent);
+
+    // Add scroll area to frameContainer's layout
+    QVBoxLayout *frameLayout = new QVBoxLayout(ui->frameContainer);
+    frameLayout->addWidget(scrollArea);
+    frameLayout->setContentsMargins(0, 0, 0, 0);  // No margins
+    ui->labelAnaVeri->setWordWrap(true);
+    ui->labelAnaVeri->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+    // Metni HTML olarak ayarlayarak daha iyi kontrol sağlayabilirsiniz
+
 }
 
 DosyaAcma::~DosyaAcma()
@@ -111,20 +133,24 @@ void DosyaAcma::showNextVisualFrame()
 
     QString currentFrameText = frameStrings[currentVisualFrameIndex];
     ui->labelFrame->setText(QString("Frame %1:\n%2").arg(currentVisualFrameIndex + 1).arg(currentFrameText));
-    QLabel *lbl = new QLabel(ui->frameContainer);
+
+    // Get the scroll content widget
+    QWidget *scrollContent = scrollArea->widget();
+
+    QLabel *lbl = new QLabel(scrollContent);  // Parent is now scrollContent
     lbl->setText(QString("🔹 Frame %1: %2")
                      .arg(currentVisualFrameIndex + 1)
                      .arg(currentFrameText.left(100)));
 
     lbl->setStyleSheet("background-color: #e1f5fe; border: 1px solid #0288d1; padding: 8px; font-family: monospace; color: black");
     lbl->setAlignment(Qt::AlignLeft);
+    lbl->setWordWrap(true);
 
-    // Önce layout'a ekle ve göster
-    ui->frameContainer->layout()->addWidget(lbl);
-    lbl->show();  // geometry() için gerekli
+    // Add to scroll content's layout
+    qobject_cast<QVBoxLayout*>(scrollContent->layout())->addWidget(lbl);
+    lbl->show();
 
-
-    // Opacity efekti
+    // Rest of your animation code remains the same...
     QGraphicsOpacityEffect *opacityEffect = new QGraphicsOpacityEffect(lbl);
     lbl->setGraphicsEffect(opacityEffect);
     opacityEffect->setOpacity(0);
@@ -135,7 +161,6 @@ void DosyaAcma::showNextVisualFrame()
     fadeAnim->setEndValue(1);
     fadeAnim->start(QAbstractAnimation::DeleteWhenStopped);
 
-    // Slide-in animasyonu
     QRect endRect = lbl->geometry();
     QRect startRect = endRect;
     startRect.moveLeft(startRect.left() + 200);
@@ -147,9 +172,15 @@ void DosyaAcma::showNextVisualFrame()
     slideAnim->setEndValue(endRect);
     slideAnim->start(QAbstractAnimation::DeleteWhenStopped);
 
-    qDebug() << "Animasyon Başlatıldı: Frame " << currentVisualFrameIndex + 1;
-
     currentVisualFrameIndex++;
+
+    // Ensure the scroll area scrolls to the newly added item
+    // Auto-scroll to bottom
+    QTimer::singleShot(100, [this]() {
+        if (scrollArea && scrollArea->verticalScrollBar()) {
+            scrollArea->verticalScrollBar()->setValue(scrollArea->verticalScrollBar()->maximum());
+        }
+    });
 }
 void DosyaAcma::on_pushButton_2_clicked()
 {
@@ -168,13 +199,20 @@ void DosyaAcma::on_pushButton_2_clicked()
 
     ui->labelTitle->setText(QString("Toplam %1 frame oluşturuldu").arg(frames.size()));
     QString allData = frameStrings.join("");
-    ui->labelAnaVeri->setText("🧱 Veri Bloğu:\n" + allData.left(300));
+    // Veriyi satırlara bölelim (örneğin her 100 karakterde bir yeni satır)
+    QString formattedData;
+    int chunkSize = 100; // Her satıra 100 karakter
+    for (int i = 0; i < allData.size(); i += chunkSize) {
+        formattedData += allData.mid(i, chunkSize) + "\n"; // mid() ile parçaları al
+    }
 
+    ui->labelAnaVeri->setText("🧱 Veri Bloğu:\n" + formattedData);
 
     // Layout kontrolü
     if (!ui->frameContainer->layout()) {
         QVBoxLayout *layout = new QVBoxLayout(ui->frameContainer);
         ui->frameContainer->setLayout(layout);
+
     }
 
     // Önceki QLabel'ları sil

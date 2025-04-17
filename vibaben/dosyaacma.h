@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QTimer>
 #include <vector>
+#include <Qscrollarea.h>
 
 namespace Ui {
 class DosyaAcma;
@@ -34,6 +35,7 @@ private:
     int currentFrameIndex = 0;
     QTimer *timer;
     QTimer *animTimer = nullptr;
+    QScrollArea *scrollArea;
 
 };
 
