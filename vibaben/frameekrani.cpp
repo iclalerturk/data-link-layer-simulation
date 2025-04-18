@@ -14,20 +14,20 @@ FrameEkrani::FrameEkrani(QWidget *parent) :
 
 
     gondericiKutusu = new QLabel("📤 Gönderici", this);
-    gondericiKutusu->setGeometry(50, 100, 120, 40);
+    gondericiKutusu->setGeometry(450, 100, 120, 40);
 
     aliciKutusu = new QLabel("📥 Alıcı", this);
-    aliciKutusu->setGeometry(430, 100, 100, 40);
+    aliciKutusu->setGeometry(880, 100, 100, 40);
 
     mektup = new QLabel("📄 Frame", this);
-    mektup->setGeometry(70, 160, 80, 40);
+    mektup->setGeometry(470, 160, 80, 40);
     mektup->hide();
 
     durumEtiketi = new QLabel(this);
-    durumEtiketi->setGeometry(180, 220, 250, 30);
+    durumEtiketi->setGeometry(580, 220, 250, 30);
 
     gonderButonu = new QPushButton("Frame Gönder", this);
-    gonderButonu->setGeometry(220, 30, 160, 40);
+    gonderButonu->setGeometry(620, 30, 160, 40);
     connect(gonderButonu, &QPushButton::clicked, this, &FrameEkrani::gonderFrame);
 
     gonderButonu->setStyleSheet(
@@ -51,14 +51,14 @@ FrameEkrani::~FrameEkrani() {
 }
 
 void FrameEkrani::gonderFrame() {
-    mektup->move(70, 160);
+    mektup->move(470, 160);
     mektup->show();
     durumEtiketi->setText("📤 Frame gönderiliyor...");
 
     animasyon = new QPropertyAnimation(mektup, "pos");
     animasyon->setDuration(2000);
-    animasyon->setStartValue(QPoint(70, 160));
-    animasyon->setEndValue(QPoint(450, 160));
+    animasyon->setStartValue(QPoint(450, 150));
+    animasyon->setEndValue(QPoint(880, 160));
     animasyon->start();
 
     ackTimer->start(2100);

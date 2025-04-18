@@ -34,6 +34,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         images.qrc
 
+        framepanel.h framepanel.cpp framepanel.ui
+        crctablo.h crctablo.cpp crctablo.ui
+
+
 
 
 

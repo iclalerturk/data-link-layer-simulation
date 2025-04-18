@@ -99,8 +99,20 @@ void DosyaAcma::on_btn_dosyaAc_clicked()
 void DosyaAcma::on_pushButton_clicked()
 {
     hide();
-    frameEkrani = new FrameEkrani(this);
-    frameEkrani->show();
+    // frameEkrani = new FrameEkrani(this);
+    // frameEkrani->show();
+    // crcHesap = new CrcHesap(this);
+    // crcHesap->show();
+    std::vector<std::string> frameStrs;
+    for (const auto& frame : frames) {
+        std::string s;
+        for (bool b : frame) s += (b ? '1' : '0');
+        frameStrs.push_back(s);
+    }
+
+    framePanel = new FramePanel(frameStrs, this);
+    framePanel->show();
+    framePanel->startCrcAnimation();
 }
 
 std::vector<bool> readFileAsBits(const QString& path) {
