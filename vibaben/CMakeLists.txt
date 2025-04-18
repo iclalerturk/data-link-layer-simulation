@@ -36,6 +36,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         framepanel.h framepanel.cpp framepanel.ui
         crctablo.h crctablo.cpp crctablo.ui
+        checksum.h checksum.cpp checksum.ui
 
 
 

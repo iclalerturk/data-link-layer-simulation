@@ -13,6 +13,20 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>910</x>
+     <y>310</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Checksum için
+ilerle</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

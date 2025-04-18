@@ -1,12 +1,14 @@
 #include "crctablo.h"
 #include "ui_crctablo.h"
 #include <QVBoxLayout>
+
 CrcTablo::CrcTablo(const std::vector<std::string>& frames, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::CrcTablo)
+    , frameList(frames)
 {
     ui->setupUi(this);
-    QVBoxLayout* layout = new QVBoxLayout(this);
+
     table = new QTableWidget(this);
     table->setColumnCount(2);
     table->setHorizontalHeaderLabels(QStringList() << "Frame" << "CRC");
@@ -25,16 +27,30 @@ CrcTablo::CrcTablo(const std::vector<std::string>& frames, QWidget *parent)
                 }
             }
         }
+        std::string crcStr = data.substr(data.size() - 16);
+        crcList.push_back(crcStr); // sınıf değişkenine ekle
 
-        QString crc = QString::fromStdString(data.substr(data.size() - 16));
+        QString crc = QString::fromStdString(crcStr);
         table->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(frames[i])));
         table->setItem(i, 1, new QTableWidgetItem(crc));
     }
 
+    // Layout oluştur ve widget'ları sırayla ekle
+    QVBoxLayout* layout = new QVBoxLayout(this);
     layout->addWidget(table);
+    layout->addWidget(ui->pushButton);  // Designer'daki buton
+
+    this->setLayout(layout);
 }
 
 CrcTablo::~CrcTablo()
 {
     delete ui;
+}
+
+void CrcTablo::on_pushButton_clicked()
+{
+    hide();
+    checksum = new Checksum(frameList, crcList, this);
+    checksum->show();
 }
