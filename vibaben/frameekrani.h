@@ -38,7 +38,8 @@ private:
     QLabel *dataLabel;
     QLabel *trailerLabel;
     QLabel *checksumHexLabel;
-    QLabel* crcIcerik;
+    QLabel *crcIcerik;
+    QLabel* ackSinyali;
     QString crcText;
 
     // Animasyonlar
@@ -50,6 +51,7 @@ private:
     // Kontrol
     QTimer *ackTimer;
     QPushButton *gonderButonu;
+
 
     // Frame içeriği
     std::vector<std::string> crcList;

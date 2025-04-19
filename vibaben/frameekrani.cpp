@@ -88,6 +88,12 @@ FrameEkrani::FrameEkrani(const std::vector<std::string>& frames, QWidget *parent
     aliciKutusu->setAlignment(Qt::AlignCenter);
     aliciKutusu->setStyleSheet("font-size: 20px; font-weight: bold; background-color: #D0E7FF; color:#3399FF; border: 2px solid #3399FF; border-radius: 15px;");
 
+    ackSinyali = new QLabel("✅ ACK", this);
+    ackSinyali->setGeometry(aliciKutusu->x(), aliciKutusu->y() + 60, 100, 40);
+    ackSinyali->setAlignment(Qt::AlignCenter);
+    ackSinyali->setStyleSheet("background-color: lightgreen; border: 2px solid green; border-radius: 10px; font-weight: bold;");
+    ackSinyali->hide();
+
     mektup = new QLabel("📄 Frame", this);
     mektup->setGeometry(startX, yOrta - 20, 100, 40);
     mektup->hide();
@@ -133,7 +139,7 @@ void FrameEkrani::gonderFrame() {
         dataLabel->setText("📦 " + frameList[currentFrameIndex]);
 
         QString headerText = QString::fromStdString(header[currentFrameIndex]);
-        headerLabel->setText("🔢 Header\n" + headerText);
+        headerLabel->setText(" Header\n" + headerText);
         // Trailer içine CRC yaz
         QString crcText = QString::fromStdString(crcList[currentFrameIndex]);
 
@@ -193,27 +199,73 @@ void FrameEkrani::kontrolEt() {
 
     if (rastgele < 10) {
         durumEtiketi->setText("❌ Frame yolda kayboldu!");
+        return;
     } else if (rastgele < 30) {
         durumEtiketi->setText("⚠ Frame bozuldu!");
         dataLabel->setText("📦 ❗");
         QTimer::singleShot(1000, this, &FrameEkrani::gonderFrame);
         return;
     } else if (rastgele < 45) {
-        durumEtiketi->setText("🔁 ACK kayıp, tekrar gönderiliyor.");
-        QTimer::singleShot(1000, this, &FrameEkrani::gonderFrame);
+        durumEtiketi->setText("🔁 ACK kayıp, gönderici tekrar bekliyor...");
+        QTimer::singleShot(2000, this, &FrameEkrani::gonderFrame);
         return;
-    } else {
-        durumEtiketi->setText("✅ Frame başarıyla ulaştı.");
     }
 
-    headerLabel->hide();
-    dataLabel->hide();
-    trailerLabel->hide();
-    crcIcerik->hide(); // Trailer içindeki CRC'yi de gizle
+    // ✅ CRC DOĞRULAMA
+    QString currentData = frameList[currentFrameIndex];
+    QString currentCRC = QString::fromStdString(crcList[currentFrameIndex]);
 
-    currentFrameIndex++;
-    QTimer::singleShot(1000, this, &FrameEkrani::gonderFrame);
+    std::string data = currentData.toStdString() + std::string(16, '0');
+    std::string generator = "10001000000100001";
+
+    for (size_t step = 0; step <= data.size() - generator.size(); ++step) {
+        if (data[step] == '1') {
+            for (size_t j = 0; j < generator.size(); ++j) {
+                data[step + j] = (data[step + j] == generator[j]) ? '0' : '1';
+            }
+        }
+    }
+
+    std::string calculatedCRC = data.substr(data.size() - 16);
+
+    if (calculatedCRC == currentCRC.toStdString()) {
+        durumEtiketi->setText("✅ Frame başarıyla ulaştı ve CRC eşleşti. ACK gönderiliyor...");
+
+        // ✅ ACK ANİMASYONU
+        int startX = aliciKutusu->x() + aliciKutusu->width() / 2 - ackSinyali->width() / 2;
+        int endX = gondericiKutusu->x() + gondericiKutusu->width() / 2 - ackSinyali->width() / 2;
+        int yKonum = aliciKutusu->y() + aliciKutusu->height() + 20;
+
+        ackSinyali->move(startX, yKonum);
+        ackSinyali->show();
+
+        QPropertyAnimation* ackAnim = new QPropertyAnimation(ackSinyali, "pos");
+        ackAnim->setDuration(2000);
+        ackAnim->setStartValue(QPoint(startX, yKonum));
+        ackAnim->setEndValue(QPoint(endX, yKonum));
+        ackAnim->start();
+
+        connect(ackAnim, &QPropertyAnimation::finished, this, [=]() {
+            ackSinyali->hide();
+            currentFrameIndex++;
+
+            // Görselleri gizle
+            headerLabel->hide();
+            dataLabel->hide();
+            trailerLabel->hide();
+            crcIcerik->hide();
+
+            QTimer::singleShot(1000, this, &FrameEkrani::gonderFrame);
+        });
+        return;
+
+    } else {
+        durumEtiketi->setText("❌ CRC uyuşmazlığı tespit edildi! Frame yeniden gönderiliyor.");
+        QTimer::singleShot(1000, this, &FrameEkrani::gonderFrame);
+        return;
+    }
 }
+
 
 void FrameEkrani::frameIlerle() {
     int startX = gondericiKutusu->x() + gondericiKutusu->width() / 2 - mektup->width() / 2;
