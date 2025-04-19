@@ -73,3 +73,17 @@
 214	2145	1745090530617941035	CMakeFiles/vibaben.dir/frameekrani.cpp.o	611c154aee287dd0
 215	2394	1745090530618053820	CMakeFiles/vibaben.dir/dosyaacma.cpp.o	cdf3c15ad1c792cf
 2394	2637	1745090532797026285	vibaben.app/Contents/MacOS/vibaben	64493ece68b1eb79
+19	142	1745090763088080465	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/CMakeFiles/cmake.verify_globs	8eaa34e5a0c330fc
+18	132	1745092209012524569	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/CMakeFiles/cmake.verify_globs	8eaa34e5a0c330fc
+146	213	1745092209139804947	vibaben_autogen/timestamp	bec8300c9030b488
+146	213	1745092209139804947	vibaben_autogen/mocs_compilation.cpp	bec8300c9030b488
+146	213	1745092209139804947	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/timestamp	bec8300c9030b488
+146	213	1745092209139804947	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/mocs_compilation.cpp	bec8300c9030b488
+213	1990	1745092209206982553	CMakeFiles/vibaben.dir/mainwindow.cpp.o	fab075731005590f
+213	1991	1745092209207498946	CMakeFiles/vibaben.dir/framepanel.cpp.o	c1fa234be6de87af
+214	1992	1745092209207974299	CMakeFiles/vibaben.dir/butonlar.cpp.o	acad1f1bcf65fd3
+213	1996	1745092209207602941	CMakeFiles/vibaben.dir/crctablo.cpp.o	674bc15af1b7d3b5
+214	2013	1745092209207708561	CMakeFiles/vibaben.dir/checksum.cpp.o	dafdbc713b1c4d44
+213	2019	1745092209207285789	CMakeFiles/vibaben.dir/frameekrani.cpp.o	611c154aee287dd0
+213	2242	1745092209207393284	CMakeFiles/vibaben.dir/dosyaacma.cpp.o	cdf3c15ad1c792cf
+2242	2493	1745092211235935076	vibaben.app/Contents/MacOS/vibaben	64493ece68b1eb79

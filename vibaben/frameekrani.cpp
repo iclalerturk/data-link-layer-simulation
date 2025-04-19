@@ -206,17 +206,34 @@ void FrameEkrani::gonderFrame() {
 
             QString calculatedChecksum = QString("%1").arg(newChecksum.to_ulong(), 2, 16, QLatin1Char('0')).toUpper();
 
-            // ✅ Karşılaştırma yap
             if (calculatedChecksum != hexChecksum) {
                 durumEtiketi->setText("❌ Checksum uyuşmazlığı tespit edildi!");
                 checksumFrame->setStyleSheet("background-color:white; color: black; font-weight:bold;");
             } else {
-                durumEtiketi->setText("✅ Checksum başarıyla ulaştı.");
+                durumEtiketi->setText("✅ Checksum başarıyla ulaştı. ACK gönderiliyor...");
+
+                // ✅ SON ACK ANİMASYONU
+                int startX = aliciKutusu->x() + aliciKutusu->width() / 2 - ackSinyali->width() / 2;
+                int endX = gondericiKutusu->x() + gondericiKutusu->width() / 2 - ackSinyali->width() / 2;
+                int yKonum = aliciKutusu->y() + aliciKutusu->height() + 20;
+
+                ackSinyali->move(startX, yKonum);
+                ackSinyali->show();
+
+                QPropertyAnimation* ackAnim = new QPropertyAnimation(ackSinyali, "pos");
+                ackAnim->setDuration(2000);
+                ackAnim->setStartValue(QPoint(startX, yKonum));
+                ackAnim->setEndValue(QPoint(endX, yKonum));
+                ackAnim->start();
+
+                connect(ackAnim, &QPropertyAnimation::finished, this, [=]() {
+                    ackSinyali->hide();
+                    durumEtiketi->setText("🎉 Tüm veriler başarıyla iletildi. Transfer tamamlandı!");
+                    checksumFrame->hide();
+                });
+                return;
             }
 
-            QTimer::singleShot(2000, this, [=]() {
-                checksumFrame->hide();
-            });
         });
     }
 
