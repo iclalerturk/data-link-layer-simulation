@@ -1,13 +1,21 @@
 #include "checksum.h"
 #include "ui_checksum.h"
 #include <bitset>
-
+#include <QPropertyAnimation>
 Checksum::Checksum(const std::vector<std::string>& frames, const std::vector<std::string>& crcList, QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::Checksum)
 {
     ui->setupUi(this);
-
+    ui->label->setStyleSheet(
+        "QLabel {"
+        "background-color: #1746A2;"     // Açık sarı (isteğe göre değiştirilebilir)
+        "border-radius: 20px;"           // Köşeleri yumuşatır
+        "padding: 8px 12px;"             // İç boşluk
+        "color: #ffffff;"                // Yazı rengi (uyumlu bir kahverengi tonu)
+        // Eğik yazı (mizahi alt yazı gibi)
+        "}"
+        );
     // CRC'leri QStringList'e dönüştür
     for (const auto& crc : crcList)
         crcQStringList.append(QString::fromStdString(crc));
@@ -17,6 +25,7 @@ Checksum::Checksum(const std::vector<std::string>& frames, const std::vector<std
         ui->listWidget->addItem("CRC: " + crc);
 
     startChecksumAnimation();
+
 }
 
 Checksum::~Checksum()
@@ -57,7 +66,26 @@ void Checksum::calculateStep()
             );
 
         // Görsel efekt (isteğe bağlı)
-        ui->labelStep->setStyleSheet("background-color: blue;");
+        // Stil animasyonu için renk değişimi
+        QPalette palette = ui->labelStep->palette();
+        QColor startColor = QColor("#1746A2");  // Başlangıç rengi (mevcut mavi ton)
+        QColor endColor = QColor("#FFE162");   // Açık sarı veya başka hoş bir ton
+
+        // Arka plan rengini animasyonla değiştir
+        QPropertyAnimation* colorAnim = new QPropertyAnimation(ui->labelStep, "styleSheet");
+        colorAnim->setDuration(500); // 0.5 saniye
+        colorAnim->setStartValue("background-color: " + startColor.name() + ";");
+        colorAnim->setEndValue("background-color: " + endColor.name() + ";");
+        colorAnim->setEasingCurve(QEasingCurve::InOutQuad);
+
+        connect(colorAnim, &QPropertyAnimation::finished, [=]() {
+            // Animasyon bitince eski stile dön
+            ui->labelStep->setStyleSheet("background-color: " + startColor.name() + ";");
+            colorAnim->deleteLater(); // Bellek sızıntısını önle
+        });
+
+        colorAnim->start();
+
         timer->start(100); // Her 100ms'de bir adım
         QTimer::singleShot(50, [=]() {
             ui->labelStep->setStyleSheet("");
