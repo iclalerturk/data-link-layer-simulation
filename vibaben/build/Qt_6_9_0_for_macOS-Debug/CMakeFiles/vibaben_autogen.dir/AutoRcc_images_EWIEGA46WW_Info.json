@@ -1,0 +1,26 @@
+{
+	"BUILD_DIR" : "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen",
+	"CMAKE_BINARY_DIR" : "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/Users/seymabasaran/Documents/GitHub/Viba/vibaben",
+	"CMAKE_SOURCE_DIR" : "/Users/seymabasaran/Documents/GitHub/Viba/vibaben",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Ninja",
+	"INCLUDE_DIR" : "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/include",
+	"INPUTS" : 
+	[
+		"/Users/seymabasaran/Documents/GitHub/Viba/vibaben/images/mektup.png",
+		"/Users/seymabasaran/Documents/GitHub/Viba/vibaben/images/postaci.png"
+	],
+	"LOCK_FILE" : "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/CMakeFiles/vibaben_autogen.dir/AutoRcc_images_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "images" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_images.cpp",
+	"RCC_EXECUTABLE" : "/Users/seymabasaran/Qt/6.9.0/macos/libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/CMakeFiles/vibaben_autogen.dir/AutoRcc_images_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/images.qrc",
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}
