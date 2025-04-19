@@ -5,13 +5,48 @@
 #include <QRandomGenerator>
 #include <QMessageBox>
 
-FrameEkrani::FrameEkrani(QWidget *parent) :
+FrameEkrani::FrameEkrani(const std::vector<std::string>& frames, QWidget *parent) :
     QDialog(parent)
     ,
     ui(new Ui::FrameEkrani)
 {
     ui->setupUi(this);
+    std::string generator = "10001000000100001";
+    for (int i = 0; i < frames.size(); ++i) {
+        std::string data = frames[i] + std::string(16, '0');
+        for (int step = 0; step <= data.size() - generator.size(); ++step) {
+            if (data[step] == '1') {
+                for (int j = 0; j < generator.size(); ++j) {
+                    data[step + j] = (data[step + j] == generator[j]) ? '0' : '1';
+                }
+            }
+        }
+        std::string crcStr = data.substr(data.size() - 16);
+        crcList.push_back(crcStr);
 
+    }
+    std::bitset<8> checksumBits;
+
+    for (const std::string& crcStr : crcList) {
+        std::bitset<16> b(crcStr);
+
+        std::bitset<8> highByte(b.to_ulong() >> 8);
+        std::bitset<8> lowByte(b.to_ulong() & 0xFF);
+
+        checksumBits = std::bitset<8>((checksumBits.to_ulong() + highByte.to_ulong() + lowByte.to_ulong()) & 0xFF);
+    }
+
+    headerLabel = new QLabel("🔢 Header", this);
+    headerLabel->setGeometry(470, 160, 100, 30);
+    headerLabel->hide();
+
+    dataLabel = new QLabel("📦 Data", this);
+    dataLabel->setGeometry(470, 200, 100, 30);
+    dataLabel->hide();
+
+    trailerLabel = new QLabel("🔚 Trailer", this);
+    trailerLabel->setGeometry(470, 240, 100, 30);
+    trailerLabel->hide();
 
     gondericiKutusu = new QLabel("📤 Gönderici", this);
     gondericiKutusu->setGeometry(450, 100, 120, 40);
@@ -51,46 +86,71 @@ FrameEkrani::~FrameEkrani() {
 }
 
 void FrameEkrani::gonderFrame() {
-    mektup->move(470, 160);
-    mektup->show();
-    durumEtiketi->setText("📤 Frame gönderiliyor...");
+    // Konumları sıfırla
+    headerLabel->move(470, 160);
+    dataLabel->move(470, 200);
+    trailerLabel->move(470, 240);
 
-    animasyon = new QPropertyAnimation(mektup, "pos");
-    animasyon->setDuration(2000);
-    animasyon->setStartValue(QPoint(450, 150));
-    animasyon->setEndValue(QPoint(880, 160));
-    animasyon->start();
+    headerLabel->show();
+    dataLabel->show();
+    trailerLabel->show();
+    QString style = "background-color: white; border: 2px solid #333; border-radius: 10px; padding: 5px;";
+    headerLabel->setStyleSheet(style);
+    dataLabel->setStyleSheet(style);
+    trailerLabel->setStyleSheet(style);
+
+    durumEtiketi->setText("📤 Frame gönderiliyor (Header + Data + Trailer)...");
+
+    headerAnim = new QPropertyAnimation(headerLabel, "pos");
+    headerAnim->setDuration(2000);
+    headerAnim->setStartValue(QPoint(470, 160));
+    headerAnim->setEndValue(QPoint(880, 160));
+
+    dataAnim = new QPropertyAnimation(dataLabel, "pos");
+    dataAnim->setDuration(2000);
+    dataAnim->setStartValue(QPoint(470, 200));
+    dataAnim->setEndValue(QPoint(880, 200));
+
+    trailerAnim = new QPropertyAnimation(trailerLabel, "pos");
+    trailerAnim->setDuration(2000);
+    trailerAnim->setStartValue(QPoint(470, 240));
+    trailerAnim->setEndValue(QPoint(880, 240));
+
+    headerAnim->start();
+    dataAnim->start();
+    trailerAnim->start();
 
     ackTimer->start(2100);
 }
 
+
 void FrameEkrani::kontrolEt() {
     ackTimer->stop();
-
     int rastgele = QRandomGenerator::global()->bounded(100);
+
     if (rastgele < 10) {
-        // Kayboldu
-        durumEtiketi->setText("❌ Mektup yolda kayboldu!");
-        mektup->hide();
+        durumEtiketi->setText("❌ Frame yolda kayboldu!");
+        headerLabel->hide();
+        dataLabel->hide();
+        trailerLabel->hide();
     }
     else if (rastgele < 30) {
-        // Bozuldu
-        durumEtiketi->setText("⚠ Mektup bozuldu, tekrar gönderilecek.");
-        mektup->setText("📄 ❗");
+        durumEtiketi->setText("⚠ Frame bozuldu, tekrar gönderilecek.");
+        dataLabel->setText("📦 ❗");
         QTimer::singleShot(1000, this, &FrameEkrani::gonderFrame);
     }
     else if (rastgele < 45) {
-        // ACK kayboldu
-        durumEtiketi->setText("🔁 ACK ulaşmadı, tekrar gönderiliyor.");
+        durumEtiketi->setText("🔁 ACK kayıp, tekrar gönderiliyor.");
         QTimer::singleShot(1000, this, &FrameEkrani::gonderFrame);
     }
     else {
-        // Başarıyla ulaştı
-        durumEtiketi->setText("✅ Mektup ulaştı, ACK alındı.");
-        mektup->setText("📄");
-        mektup->hide();
+        durumEtiketi->setText("✅ Frame başarıyla ulaştı.");
+        headerLabel->hide();
+        dataLabel->hide();
+        trailerLabel->hide();
     }
 }
+
 void FrameEkrani::frameIlerle() {
     // Henüz kullanılmıyorsa boş bırakabilirsin
 }

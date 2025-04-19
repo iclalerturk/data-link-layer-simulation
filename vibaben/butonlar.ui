@@ -572,7 +572,7 @@ QPushButton:hover {
 </string>
    </property>
    <property name="text">
-    <string>Chechsum Oluşumunu Gör</string>
+    <string>Checksum Oluşumunu Gör</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_4">
