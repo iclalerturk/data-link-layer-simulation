@@ -192,7 +192,7 @@ public:
         Butonlar->setWindowTitle(QCoreApplication::translate("Butonlar", "Dialog", nullptr));
         pushButton->setText(QCoreApplication::translate("Butonlar", "CRC Olu\305\237umunu G\303\266r", nullptr));
         pushButton_2->setText(QCoreApplication::translate("Butonlar", "CRC Tablosunu G\303\266r", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("Butonlar", "Chechsum Olu\305\237umunu G\303\266r", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("Butonlar", "Checksum Olu\305\237umunu G\303\266r", nullptr));
         pushButton_4->setText(QCoreApplication::translate("Butonlar", "Veri G\303\266nderimini g\303\266r", nullptr));
     } // retranslateUi
 

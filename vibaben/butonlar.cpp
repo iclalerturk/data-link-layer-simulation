@@ -27,7 +27,7 @@ void Butonlar::on_pushButton_clicked()
     framePanel->startCrcAnimation();
 }
 
-<<<<<<< Updated upstream
+
 // 2. Buton → CRC Tablosu
 void Butonlar::on_pushButton_2_clicked()
 {
@@ -59,7 +59,7 @@ void Butonlar::on_pushButton_3_clicked()
     checksum = new Checksum(frames, crcList, this);
     checksum->show();
 }
-=======
+
 
 void Butonlar::on_pushButton_4_clicked()
 {
@@ -68,4 +68,4 @@ void Butonlar::on_pushButton_4_clicked()
     //frameEkrani->startCrcAnimation();
 }
 
->>>>>>> Stashed changes
+
