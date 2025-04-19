@@ -169,10 +169,13 @@ void FrameEkrani::gonderFrame() {
 
         ackTimer->start(2100);
     } else {
-        QLabel* checksumFrame = new QLabel("🧮 Checksum: 0x" + hexChecksum, this);
-        checksumFrame->setGeometry(100, yKonum + 150, 250, 40);
-        checksumFrame->setStyleSheet("background-color:white; font-weight:bold;");
+        QLabel* checksumFrame = new QLabel(this);
+        checksumFrame->setGeometry(100, yKonum + 150, 300, 40);
+        checksumFrame->setAlignment(Qt::AlignCenter);
+        checksumFrame->setText("🧮 Checksum: 0x" + hexChecksum);
+        checksumFrame->setStyleSheet("background-color:white; font-weight:bold; font-size: 14px; border: 2px solid black; border-radius: 10px; color: black;");
         checksumFrame->show();
+
 
         QPropertyAnimation* anim = new QPropertyAnimation(checksumFrame, "pos");
         anim->setDuration(2000);
@@ -181,16 +184,43 @@ void FrameEkrani::gonderFrame() {
         anim->start();
 
         QTimer::singleShot(2100, this, [=]() {
-            int r = QRandomGenerator::global()->bounded(100);
-            if (r < 5) {
-                durumEtiketi->setText("❌ Checksum bozuldu!");
-                checksumFrame->setStyleSheet("color: red;");
+            // 🔧 BOZULMUŞ VERİ ÜZERİNDEN CHECKSUM HESAPLA
+            std::vector<std::string> bozukCrcList = crcList;
+            std::bitset<8> newChecksum;
+
+            // %5 ihtimalle bir biti boz
+            bool bozuldu = QRandomGenerator::global()->bounded(100) < 5;
+            if (bozuldu && !bozukCrcList.empty()) {
+                int frameIndex = QRandomGenerator::global()->bounded(static_cast<int>(bozukCrcList.size()));
+                int bitIndex = QRandomGenerator::global()->bounded(16);
+                bozukCrcList[frameIndex][bitIndex] = (bozukCrcList[frameIndex][bitIndex] == '0') ? '1' : '0';
+            }
+
+            // Yeni Checksum hesapla
+            for (const std::string& crcStr : bozukCrcList) {
+                std::bitset<16> b(crcStr);
+                std::bitset<8> highByte(b.to_ulong() >> 8);
+                std::bitset<8> lowByte(b.to_ulong() & 0xFF);
+                newChecksum = std::bitset<8>((newChecksum.to_ulong() + highByte.to_ulong() + lowByte.to_ulong()) & 0xFF);
+            }
+
+            QString calculatedChecksum = QString("%1").arg(newChecksum.to_ulong(), 2, 16, QLatin1Char('0')).toUpper();
+
+            // ✅ Karşılaştırma yap
+            if (calculatedChecksum != hexChecksum) {
+                durumEtiketi->setText("❌ Checksum uyuşmazlığı tespit edildi!");
+                checksumFrame->setStyleSheet("background-color:white; color: black; font-weight:bold;");
             } else {
                 durumEtiketi->setText("✅ Checksum başarıyla ulaştı.");
             }
-            checksumFrame->hide();
+
+            QTimer::singleShot(2000, this, [=]() {
+                checksumFrame->hide();
+            });
         });
     }
+
+
 }
 
 void FrameEkrani::kontrolEt() {
