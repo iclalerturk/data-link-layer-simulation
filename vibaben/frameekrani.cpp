@@ -198,16 +198,18 @@ void FrameEkrani::kontrolEt() {
     int rastgele = QRandomGenerator::global()->bounded(100);
 
     if (rastgele < 10) {
-        durumEtiketi->setText("❌ Frame yolda kayboldu!");
+        durumEtiketi->setText("❌ Frame yolda kayboldu! Yeniden gönderiliyor...");
+
+        QTimer::singleShot(3000, this, &FrameEkrani::gonderFrame);
         return;
     } else if (rastgele < 30) {
         durumEtiketi->setText("⚠ Frame bozuldu!");
         dataLabel->setText("📦 ❗");
-        QTimer::singleShot(1000, this, &FrameEkrani::gonderFrame);
+        QTimer::singleShot(3000, this, &FrameEkrani::gonderFrame);
         return;
     } else if (rastgele < 45) {
         durumEtiketi->setText("🔁 ACK kayıp, gönderici tekrar bekliyor...");
-        QTimer::singleShot(2000, this, &FrameEkrani::gonderFrame);
+        QTimer::singleShot(3000, this, &FrameEkrani::gonderFrame);
         return;
     }
 
