@@ -691,6 +691,8 @@ vibaben_autogen/timestamp: \
 	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
 	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
 	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/moc_predefs.h \
+	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.cpp \
+	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.h \
 	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.cpp \
 	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.h \
 	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/crctablo.cpp \
@@ -1159,6 +1161,7 @@ vibaben_autogen/timestamp: \
 	/Users/seymabasaran/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/Platform/Darwin-Initialize.cmake \
 	/Users/seymabasaran/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/Platform/Darwin.cmake \
 	/Users/seymabasaran/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/Platform/UnixPaths.cmake \
+	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.ui \
 	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.ui \
 	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/crctablo.ui \
 	/Users/seymabasaran/Documents/GitHub/Viba/vibaben/dosyaacma.ui \

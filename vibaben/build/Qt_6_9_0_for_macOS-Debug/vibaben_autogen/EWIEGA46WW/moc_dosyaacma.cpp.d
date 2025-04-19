@@ -687,6 +687,7 @@
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/qos.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/time.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdarg.h \
+  /Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.h \
   /Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.h \
   /Users/seymabasaran/Documents/GitHub/Viba/vibaben/crctablo.h \
   /Users/seymabasaran/Documents/GitHub/Viba/vibaben/frameekrani.h \

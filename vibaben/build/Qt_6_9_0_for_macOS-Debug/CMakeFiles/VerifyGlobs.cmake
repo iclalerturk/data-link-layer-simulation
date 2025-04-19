@@ -47,6 +47,7 @@ set(OLD_GLOB
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/vibaben_autogen/EWIEGA46WW/moc_mainwindow.cpp"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/vibaben_autogen/mocs_compilation.cpp"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/CMakeFiles/3.30.5/CompilerIdCXX/CMakeCXXCompilerId.cpp"
+  "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/EWIEGA46WW/moc_butonlar.cpp"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/EWIEGA46WW/moc_checksum.cpp"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/EWIEGA46WW/moc_crctablo.cpp"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/EWIEGA46WW/moc_dosyaacma.cpp"
@@ -55,6 +56,7 @@ set(OLD_GLOB
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/EWIEGA46WW/moc_mainwindow.cpp"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/EWIEGA46WW/qrc_images.cpp"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/mocs_compilation.cpp"
+  "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.cpp"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.cpp"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/crctablo.cpp"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/dosyaacma.cpp"
@@ -84,6 +86,7 @@ set(OLD_GLOB
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/vibaben_autogen/include/ui_frameekrani.h"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/vibaben_autogen/include/ui_mainwindow.h"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/vibaben_autogen/moc_predefs.h"
+  "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/include/ui_butonlar.h"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/include/ui_checksum.h"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/include/ui_crctablo.h"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/include/ui_dosyaacma.h"
@@ -91,6 +94,7 @@ set(OLD_GLOB
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/include/ui_framepanel.h"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/include/ui_mainwindow.h"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/moc_predefs.h"
+  "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.h"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.h"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/crctablo.h"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/dosyaacma.h"
@@ -198,6 +202,7 @@ endif()
 # _directory_contents at /Users/seymabasaran/Qt/6.9.0/macos/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:55 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/*.ui")
 set(OLD_GLOB
+  "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.ui"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.ui"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/crctablo.ui"
   "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/dosyaacma.ui"

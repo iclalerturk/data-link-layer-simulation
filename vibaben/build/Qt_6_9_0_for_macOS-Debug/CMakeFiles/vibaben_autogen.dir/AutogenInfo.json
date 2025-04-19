@@ -395,6 +395,12 @@
 	"HEADERS" : 
 	[
 		[
+			"/Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.h",
+			"MU",
+			"EWIEGA46WW/moc_butonlar.cpp",
+			null
+		],
+		[
 			"/Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.h",
 			"MU",
 			"EWIEGA46WW/moc_checksum.cpp",
@@ -490,6 +496,11 @@
 	"SETTINGS_FILE" : "/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/CMakeFiles/vibaben_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"/Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.cpp",
+			"MU",
+			null
+		],
 		[
 			"/Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.cpp",
 			"MU",

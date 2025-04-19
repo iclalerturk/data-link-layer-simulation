@@ -1,15 +1,17 @@
 #include "framepanel.h"
 #include "ui_framepanel.h"
+#include "butonlar.h"  // ❗️SHOW gibi fonksiyonlar için tam tanım gerekli
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QFont>
 
-FramePanel::FramePanel(const std::vector<std::string>& allFrames, QWidget *parent)
+FramePanel::FramePanel(const std::vector<std::string>& allFrames, Butonlar* previousPageRef, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::FramePanel)
     , frameBits(allFrames[0])
     , frames(allFrames)
     , step(0)
+    , previousPage(previousPageRef)  // 👈 burada atanıyor
 {
     ui->setupUi(this);
 
@@ -50,6 +52,10 @@ FramePanel::FramePanel(const std::vector<std::string>& allFrames, QWidget *paren
         );
     layout->addWidget(backButton);
     connect(backButton, &QPushButton::clicked, this, &FramePanel::close);
+    connect(backButton, &QPushButton::clicked, this, [=]() {
+        this->close();              // FramePanel kapanır
+        previousPage->show();       // Butonlar yeniden görünür
+    });
 
     // Zamanlayıcı kur
     timer = new QTimer(this);

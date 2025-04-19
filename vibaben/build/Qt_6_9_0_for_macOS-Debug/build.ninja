@@ -113,6 +113,14 @@ build CMakeFiles/vibaben.dir/checksum.cpp.o: CXX_COMPILER__vibaben_unscanned_Deb
   OBJECT_DIR = CMakeFiles/vibaben.dir
   OBJECT_FILE_DIR = CMakeFiles/vibaben.dir
 
+build CMakeFiles/vibaben.dir/butonlar.cpp.o: CXX_COMPILER__vibaben_unscanned_Debug /Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.cpp || cmake_object_order_depends_target_vibaben
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles/vibaben.dir/butonlar.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -fcolor-diagnostics
+  INCLUDES = -I/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/include -isystem /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Headers -iframework /Users/seymabasaran/Qt/6.9.0/macos/lib -isystem /Users/seymabasaran/Qt/6.9.0/macos/mkspecs/macx-clang -isystem /Users/seymabasaran/Qt/6.9.0/macos/include -isystem /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -isystem /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Headers
+  OBJECT_DIR = CMakeFiles/vibaben.dir
+  OBJECT_FILE_DIR = CMakeFiles/vibaben.dir
+
 build CMakeFiles/vibaben.dir/vibaben_autogen/EWIEGA46WW/qrc_images.cpp.o: CXX_COMPILER__vibaben_unscanned_Debug /Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/EWIEGA46WW/qrc_images.cpp || cmake_object_order_depends_target_vibaben
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
   DEP_FILE = CMakeFiles/vibaben.dir/vibaben_autogen/EWIEGA46WW/qrc_images.cpp.o.d
@@ -129,7 +137,7 @@ build CMakeFiles/vibaben.dir/vibaben_autogen/EWIEGA46WW/qrc_images.cpp.o: CXX_CO
 #############################################
 # Link the executable vibaben.app/Contents/MacOS/vibaben
 
-build vibaben.app/Contents/MacOS/vibaben: CXX_EXECUTABLE_LINKER__vibaben_Debug CMakeFiles/vibaben.dir/vibaben_autogen/mocs_compilation.cpp.o CMakeFiles/vibaben.dir/main.cpp.o CMakeFiles/vibaben.dir/mainwindow.cpp.o CMakeFiles/vibaben.dir/frameekrani.cpp.o CMakeFiles/vibaben.dir/dosyaacma.cpp.o CMakeFiles/vibaben.dir/framepanel.cpp.o CMakeFiles/vibaben.dir/crctablo.cpp.o CMakeFiles/vibaben.dir/checksum.cpp.o CMakeFiles/vibaben.dir/vibaben_autogen/EWIEGA46WW/qrc_images.cpp.o | /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/QtWidgets /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/QtGui /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/QtCore || vibaben_autogen vibaben_autogen_timestamp_deps
+build vibaben.app/Contents/MacOS/vibaben: CXX_EXECUTABLE_LINKER__vibaben_Debug CMakeFiles/vibaben.dir/vibaben_autogen/mocs_compilation.cpp.o CMakeFiles/vibaben.dir/main.cpp.o CMakeFiles/vibaben.dir/mainwindow.cpp.o CMakeFiles/vibaben.dir/frameekrani.cpp.o CMakeFiles/vibaben.dir/dosyaacma.cpp.o CMakeFiles/vibaben.dir/framepanel.cpp.o CMakeFiles/vibaben.dir/crctablo.cpp.o CMakeFiles/vibaben.dir/checksum.cpp.o CMakeFiles/vibaben.dir/butonlar.cpp.o CMakeFiles/vibaben.dir/vibaben_autogen/EWIEGA46WW/qrc_images.cpp.o | /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/QtWidgets /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/QtGui /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/QtCore || vibaben_autogen vibaben_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5
   LINK_LIBRARIES = -Wl,-rpath,/Users/seymabasaran/Qt/6.9.0/macos/lib  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/QtWidgets  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/QtGui  -framework AGL  -framework AppKit  -framework OpenGL  -framework ImageIO  -framework Metal  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/QtCore  -framework IOKit  -framework DiskArbitration  -framework UniformTypeIdentifiers
   LINK_PATH = -F/Users/seymabasaran/Qt/6.9.0/macos/lib
@@ -215,7 +223,7 @@ build vibaben_autogen_timestamp_deps: phony
 #############################################
 # Utility command for vibaben_autogen
 
-build vibaben_autogen: phony CMakeFiles/vibaben_autogen vibaben_autogen/include/ui_mainwindow.h vibaben_autogen/include/ui_frameekrani.h vibaben_autogen/include/ui_dosyaacma.h vibaben_autogen/include/ui_framepanel.h vibaben_autogen/include/ui_crctablo.h vibaben_autogen/include/ui_checksum.h vibaben_autogen/timestamp vibaben_autogen/mocs_compilation.cpp vibaben_autogen_timestamp_deps
+build vibaben_autogen: phony CMakeFiles/vibaben_autogen vibaben_autogen/include/ui_mainwindow.h vibaben_autogen/include/ui_frameekrani.h vibaben_autogen/include/ui_dosyaacma.h vibaben_autogen/include/ui_framepanel.h vibaben_autogen/include/ui_crctablo.h vibaben_autogen/include/ui_checksum.h vibaben_autogen/include/ui_butonlar.h vibaben_autogen/timestamp vibaben_autogen/mocs_compilation.cpp vibaben_autogen_timestamp_deps
 
 
 #############################################
@@ -241,7 +249,7 @@ build vibaben_autogen/EWIEGA46WW/qrc_images.cpp | ${cmake_ninja_workdir}vibaben_
 #############################################
 # Phony custom command for CMakeFiles/vibaben_autogen
 
-build CMakeFiles/vibaben_autogen vibaben_autogen/include/ui_mainwindow.h vibaben_autogen/include/ui_frameekrani.h vibaben_autogen/include/ui_dosyaacma.h vibaben_autogen/include/ui_framepanel.h vibaben_autogen/include/ui_crctablo.h vibaben_autogen/include/ui_checksum.h | ${cmake_ninja_workdir}CMakeFiles/vibaben_autogen ${cmake_ninja_workdir}vibaben_autogen/include/ui_mainwindow.h ${cmake_ninja_workdir}vibaben_autogen/include/ui_frameekrani.h ${cmake_ninja_workdir}vibaben_autogen/include/ui_dosyaacma.h ${cmake_ninja_workdir}vibaben_autogen/include/ui_framepanel.h ${cmake_ninja_workdir}vibaben_autogen/include/ui_crctablo.h ${cmake_ninja_workdir}vibaben_autogen/include/ui_checksum.h: phony vibaben_autogen/timestamp || vibaben_autogen_timestamp_deps
+build CMakeFiles/vibaben_autogen vibaben_autogen/include/ui_mainwindow.h vibaben_autogen/include/ui_frameekrani.h vibaben_autogen/include/ui_dosyaacma.h vibaben_autogen/include/ui_framepanel.h vibaben_autogen/include/ui_crctablo.h vibaben_autogen/include/ui_checksum.h vibaben_autogen/include/ui_butonlar.h | ${cmake_ninja_workdir}CMakeFiles/vibaben_autogen ${cmake_ninja_workdir}vibaben_autogen/include/ui_mainwindow.h ${cmake_ninja_workdir}vibaben_autogen/include/ui_frameekrani.h ${cmake_ninja_workdir}vibaben_autogen/include/ui_dosyaacma.h ${cmake_ninja_workdir}vibaben_autogen/include/ui_framepanel.h ${cmake_ninja_workdir}vibaben_autogen/include/ui_crctablo.h ${cmake_ninja_workdir}vibaben_autogen/include/ui_checksum.h ${cmake_ninja_workdir}vibaben_autogen/include/ui_butonlar.h: phony vibaben_autogen/timestamp || vibaben_autogen_timestamp_deps
 
 # =============================================================================
 # Target aliases.

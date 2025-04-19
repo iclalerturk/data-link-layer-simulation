@@ -6,6 +6,8 @@
 #include <QTimer>
 #include "crctablo.h"
 
+class Butonlar;  // ❗️Forward declaration burada kalacak
+
 namespace Ui {
 class FramePanel;
 }
@@ -15,8 +17,9 @@ class FramePanel : public QDialog
     Q_OBJECT
 
 public:
-    explicit FramePanel(const std::vector<std::string>& allFrames, QWidget *parent = nullptr);
+    explicit FramePanel(const std::vector<std::string>& allFrames, Butonlar* previousPage, QWidget *parent = nullptr);
     ~FramePanel();
+
     void startCrcAnimation();
 
 private slots:
@@ -31,8 +34,9 @@ private:
     QLabel *crcResultLabel;
     CrcTablo *crcTablo;
 
+    Butonlar* previousPage;
     std::string frameBits;
-    std::vector<std::string> frames;  // tüm frameler (tablo için)
+    std::vector<std::string> frames;
 
     std::string data;
     std::string generator;

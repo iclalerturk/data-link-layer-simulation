@@ -1,4 +1,4 @@
-/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/EWIEGA46WW/moc_mainwindow.cpp: /Users/seymabasaran/Documents/GitHub/Viba/vibaben/mainwindow.h \
+/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/EWIEGA46WW/moc_butonlar.cpp: /Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.h \
   /Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/moc_predefs.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Availability.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h \
@@ -592,7 +592,6 @@
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/bit \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/bitset \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cctype \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono \
@@ -687,15 +686,6 @@
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/qos.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/time.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdarg.h \
-  /Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.h \
-  /Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.h \
-  /Users/seymabasaran/Documents/GitHub/Viba/vibaben/crctablo.h \
-  /Users/seymabasaran/Documents/GitHub/Viba/vibaben/dosyaacma.h \
-  /Users/seymabasaran/Documents/GitHub/Viba/vibaben/frameekrani.h \
-  /Users/seymabasaran/Documents/GitHub/Viba/vibaben/framepanel.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QPropertyAnimation \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QStringList \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QTimer \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q17memory.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q20functional.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q20iterator.h \
@@ -703,9 +693,6 @@
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q20type_traits.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q20utility.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q23utility.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qabstractanimation.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qabstracteventdispatcher.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qabstractitemmodel.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qalgorithms.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qanystringview.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qarraydata.h \
@@ -715,7 +702,6 @@
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qatomic.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qatomic_cxx11.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qbasicatomic.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qbasictimer.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qbindingstorage.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qbytearray.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qbytearrayalgorithms.h \
@@ -734,12 +720,8 @@
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qcontiguouscache.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qdarwinhelpers.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qdatastream.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qdeadlinetimer.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qdebug.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qeasingcurve.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qelapsedtimer.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qendian.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qeventloop.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qexceptionhandling.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qflags.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qfloat16.h \
@@ -751,15 +733,12 @@
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qglobalstatic.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qhash.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qhashfunctions.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qiodevice.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qiodevicebase.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qitemselectionmodel.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qiterable.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qiterator.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qlatin1stringview.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qline.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qlist.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qlocale.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qlogging.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qmalloc.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qmap.h \
@@ -778,10 +757,8 @@
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qpair.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qpoint.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qprocessordetection.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qpropertyanimation.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qrect.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qrefcount.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qregularexpression.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qscopedpointer.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qscopeguard.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qset.h \
@@ -818,7 +795,6 @@
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qtenvironmentvariables.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qtextstream.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qtformat_impl.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qtimer.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qtmetamacros.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qtnoop.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qtpreprocessorsupport.h \
@@ -829,10 +805,8 @@
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qtversionchecks.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qtypeinfo.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qtypes.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qurl.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qutf8stringview.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qvariant.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qvariantanimation.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qvarlengtharray.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qversiontagging.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qxptype_traits.h \
@@ -851,46 +825,20 @@
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qkeysequence.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qpaintdevice.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qpalette.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qpicture.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qpixelformat.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qpixmap.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qpolygon.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qregion.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qrgb.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qrgba64.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qtextdocument.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qtgui-config.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qtguiexports.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qtguiglobal.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qtransform.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qvalidator.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qwindowdefs.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/QDialog \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/QLabel \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/QPushButton \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/QTableWidget \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractbutton.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractitemdelegate.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractitemview.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractscrollarea.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractslider.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractspinbox.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qdialog.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qframe.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qlabel.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qpushbutton.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qrubberband.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qscrollarea.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qsizepolicy.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qslider.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qstyle.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qstyleoption.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qtabbar.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qtableview.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qtablewidget.h \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qtabwidget.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgets-config.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgetsexports.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgetsglobal.h \
