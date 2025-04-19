@@ -199,7 +199,6 @@ void FrameEkrani::kontrolEt() {
 
     if (rastgele < 10) {
         durumEtiketi->setText("❌ Frame yolda kayboldu! Yeniden gönderiliyor...");
-
         QTimer::singleShot(3000, this, &FrameEkrani::gonderFrame);
         return;
     } else if (rastgele < 30) {
@@ -213,22 +212,36 @@ void FrameEkrani::kontrolEt() {
         return;
     }
 
-    // ✅ CRC DOĞRULAMA
+    // ✅ CRC DOĞRULAMA - tempData üzerinden yapılıyor
     QString currentData = frameList[currentFrameIndex];
     QString currentCRC = QString::fromStdString(crcList[currentFrameIndex]);
 
-    std::string data = currentData.toStdString() + std::string(16, '0');
+    std::string tempData = currentData.toStdString();  // Geçici kopya
+
+    // %20 ihtimalle veri bozulacak
+    int bozulmaIhtimali = QRandomGenerator::global()->bounded(100);
+    if (bozulmaIhtimali < 20 && !tempData.empty()) {
+        int bitCount = static_cast<int>(tempData.length() * 8); // HATA BURADAN ÇIKMASIN DİYE
+        int bitIndex = QRandomGenerator::global()->bounded(bitCount); // ŞİMDİ DOĞRU
+        int byteIndex = bitIndex / 8;
+        int bitInByte = bitIndex % 8;
+        tempData[byteIndex] ^= (1 << bitInByte);  // Rastgele bir biti ters çevir
+        durumEtiketi->setText("⚠️ Veri CRC için bozuldu! CRC kontrolü bozuk veriyle yapılacak.");
+    }
+
+
+    std::string dataWithCRC = tempData + std::string(16, '0');
     std::string generator = "10001000000100001";
 
-    for (size_t step = 0; step <= data.size() - generator.size(); ++step) {
-        if (data[step] == '1') {
+    for (size_t step = 0; step <= dataWithCRC.size() - generator.size(); ++step) {
+        if (dataWithCRC[step] == '1') {
             for (size_t j = 0; j < generator.size(); ++j) {
-                data[step + j] = (data[step + j] == generator[j]) ? '0' : '1';
+                dataWithCRC[step + j] = (dataWithCRC[step + j] == generator[j]) ? '0' : '1';
             }
         }
     }
 
-    std::string calculatedCRC = data.substr(data.size() - 16);
+    std::string calculatedCRC = dataWithCRC.substr(dataWithCRC.size() - 16);
 
     if (calculatedCRC == currentCRC.toStdString()) {
         durumEtiketi->setText("✅ Frame başarıyla ulaştı ve CRC eşleşti. ACK gönderiliyor...");
@@ -267,6 +280,7 @@ void FrameEkrani::kontrolEt() {
         return;
     }
 }
+
 
 
 void FrameEkrani::frameIlerle() {
