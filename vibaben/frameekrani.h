@@ -48,6 +48,7 @@ private:
     QPropertyAnimation *animasyon;
     std::vector<std::string> frameList;
     std::vector<std::string> crcList;
+
     bool ackGeldi;
 };
 
