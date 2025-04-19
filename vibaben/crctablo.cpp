@@ -15,7 +15,7 @@ CrcTablo::CrcTablo(const std::vector<std::string>& frames, QWidget *parent)
 
     // Stil sadece bu pencereye uygulansın diye isim veriyoruz
     this->setObjectName("CrcTablo");
-    this->setStyleSheet("QDialog#CrcTablo { background-color: white; }");
+    this->setStyleSheet("QDialog#CrcTablo { background-color: #b3e2f4; }");
 
     // Label'lar (örn. başlıklar varsa) mavi yazı
     for (QLabel* label : this->findChildren<QLabel*>()) {
