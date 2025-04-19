@@ -1,16 +1,20 @@
 #include "frameekrani.h"
 #include "ui_frameekrani.h"
 
-
 #include <QRandomGenerator>
 #include <QMessageBox>
+#include <QPropertyAnimation>
+#include <QTimer>
+#include <QLabel>
+#include <QPushButton>
+#include <bitset>
 
-FrameEkrani::FrameEkrani(const std::vector<std::string>& frames, QWidget *parent) :
-    QDialog(parent)
-    ,
-    ui(new Ui::FrameEkrani)
-{
+FrameEkrani::FrameEkrani(const std::vector<std::string>& frames, QWidget *parent)
+    : QDialog(parent), ui(new Ui::FrameEkrani) {
     ui->setupUi(this);
+    this->setFixedSize(1024, 600); // Sabit ekran boyutu
+
+    // CRC hesaplama (önceki haliyle aynı)
     std::string generator = "10001000000100001";
     for (int i = 0; i < frames.size(); ++i) {
         std::string data = frames[i] + std::string(16, '0');
@@ -23,53 +27,75 @@ FrameEkrani::FrameEkrani(const std::vector<std::string>& frames, QWidget *parent
         }
         std::string crcStr = data.substr(data.size() - 16);
         crcList.push_back(crcStr);
-
     }
-    std::bitset<8> checksumBits;
 
+    std::bitset<8> checksumBits;
     for (const std::string& crcStr : crcList) {
         std::bitset<16> b(crcStr);
-
         std::bitset<8> highByte(b.to_ulong() >> 8);
         std::bitset<8> lowByte(b.to_ulong() & 0xFF);
-
         checksumBits = std::bitset<8>((checksumBits.to_ulong() + highByte.to_ulong() + lowByte.to_ulong()) & 0xFF);
     }
 
+    int yOrta = height() / 2;
+    int startX = 60;
+    int endX = 800;
+
+    // Frame parçaları ortadan geçecek
     headerLabel = new QLabel("🔢 Header", this);
-    headerLabel->setGeometry(470, 160, 100, 30);
+    headerLabel->setGeometry(startX, yOrta, 150, 40);
+    headerLabel->setAlignment(Qt::AlignCenter);
     headerLabel->hide();
 
     dataLabel = new QLabel("📦 Data", this);
-    dataLabel->setGeometry(470, 200, 100, 30);
+    dataLabel->setGeometry(startX, yOrta+60, 150, 40);
+    dataLabel->setAlignment(Qt::AlignCenter);
     dataLabel->hide();
 
     trailerLabel = new QLabel("🔚 Trailer", this);
-    trailerLabel->setGeometry(470, 240, 100, 30);
+    trailerLabel->setGeometry(startX, yOrta + 120, 150, 40);
+    trailerLabel->setAlignment(Qt::AlignCenter);
     trailerLabel->hide();
 
+    // Gönderici ve Alıcı
     gondericiKutusu = new QLabel("📤 Gönderici", this);
-    gondericiKutusu->setGeometry(450, 100, 120, 40);
+    gondericiKutusu->setGeometry(startX, 80, 180, 50);
+    gondericiKutusu->setAlignment(Qt::AlignCenter);
+    gondericiKutusu->setStyleSheet(
+        "font-size: 20px; font-weight: bold; background-color: #D0E7FF; color:#3399FF; "
+        "border: 2px solid #3399FF; border-radius: 15px;"
+        );
 
     aliciKutusu = new QLabel("📥 Alıcı", this);
-    aliciKutusu->setGeometry(880, 100, 100, 40);
+    aliciKutusu->setGeometry(endX, 80, 180, 50);
+    aliciKutusu->setAlignment(Qt::AlignCenter);
+    aliciKutusu->setStyleSheet(
+        "font-size: 20px; font-weight: bold; background-color: #D0E7FF; color:#3399FF; "
+        "border: 2px solid #3399FF; border-radius: 15px;"
+        );
 
+    // Frame simgesi
     mektup = new QLabel("📄 Frame", this);
-    mektup->setGeometry(470, 160, 80, 40);
+    mektup->setGeometry(startX, yOrta - 20, 100, 40);
     mektup->hide();
 
+    // Durum etiketi ekranın altında
     durumEtiketi = new QLabel(this);
-    durumEtiketi->setGeometry(580, 220, 250, 30);
+    durumEtiketi->setGeometry((width() - 600) / 2, height() - 60, 600, 40);
+    durumEtiketi->setAlignment(Qt::AlignCenter);
+    durumEtiketi->setStyleSheet("font-size: 16px; color: black; font-weight: bold;");
 
-    gonderButonu = new QPushButton("Frame Gönder", this);
-    gonderButonu->setGeometry(620, 30, 160, 40);
+    // Gönder butonu
+    gonderButonu = new QPushButton("📨 Frame Gönder", this);
+    gonderButonu->setGeometry((width() - 200) / 2, 20, 200, 40);
     connect(gonderButonu, &QPushButton::clicked, this, &FrameEkrani::gonderFrame);
 
     gonderButonu->setStyleSheet(
         "QPushButton {"
         " background-color: #1746A2;"
-        //" color: white;"
-        //" font-size: 20px;"
+        " color: white;"
+        " font-size: 16px;"
+        " font-weight: bold;"
         " border-radius: 20px;"
         " }"
         "QPushButton:hover {"
@@ -81,19 +107,27 @@ FrameEkrani::FrameEkrani(const std::vector<std::string>& frames, QWidget *parent
     connect(ackTimer, &QTimer::timeout, this, &FrameEkrani::kontrolEt);
 }
 
+
 FrameEkrani::~FrameEkrani() {
     delete ui;
 }
 
 void FrameEkrani::gonderFrame() {
-    // Konumları sıfırla
-    headerLabel->move(470, 160);
-    dataLabel->move(470, 200);
-    trailerLabel->move(470, 240);
+    int startX = 100;
+    int endX = 700; // Tek bir hedef noktası
+
+    int yKonum = height() / 2;
+    int aralik = 150; // Aralarındaki mesafe
+
+    // Başlangıç pozisyonları
+    headerLabel->move(startX, yKonum);
+    dataLabel->move(startX + aralik, yKonum);
+    trailerLabel->move(startX + 2 * aralik, yKonum);
 
     headerLabel->show();
     dataLabel->show();
     trailerLabel->show();
+
     QString style = "background-color: white; border: 2px solid #333; border-radius: 10px; padding: 5px;";
     headerLabel->setStyleSheet(style);
     dataLabel->setStyleSheet(style);
@@ -101,20 +135,21 @@ void FrameEkrani::gonderFrame() {
 
     durumEtiketi->setText("📤 Frame gönderiliyor (Header + Data + Trailer)...");
 
+    // Animasyonla hepsini aynı hızda ve aralıkla taşıyoruz
     headerAnim = new QPropertyAnimation(headerLabel, "pos");
     headerAnim->setDuration(2000);
-    headerAnim->setStartValue(QPoint(470, 160));
-    headerAnim->setEndValue(QPoint(880, 160));
+    headerAnim->setStartValue(QPoint(startX, yKonum));
+    headerAnim->setEndValue(QPoint(endX, yKonum));
 
     dataAnim = new QPropertyAnimation(dataLabel, "pos");
     dataAnim->setDuration(2000);
-    dataAnim->setStartValue(QPoint(470, 200));
-    dataAnim->setEndValue(QPoint(880, 200));
+    dataAnim->setStartValue(QPoint(startX + aralik, yKonum));
+    dataAnim->setEndValue(QPoint(endX + aralik, yKonum));
 
     trailerAnim = new QPropertyAnimation(trailerLabel, "pos");
     trailerAnim->setDuration(2000);
-    trailerAnim->setStartValue(QPoint(470, 240));
-    trailerAnim->setEndValue(QPoint(880, 240));
+    trailerAnim->setStartValue(QPoint(startX + 2 * aralik, yKonum));
+    trailerAnim->setEndValue(QPoint(endX + 2 * aralik, yKonum));
 
     headerAnim->start();
     dataAnim->start();
@@ -152,5 +187,5 @@ void FrameEkrani::kontrolEt() {
 }
 
 void FrameEkrani::frameIlerle() {
-    // Henüz kullanılmıyorsa boş bırakabilirsin
+    // İleride animasyonla frame ilerletmek istersen burayı kullanabilirsin
 }
