@@ -2,6 +2,7 @@
 #define DOSYAACMA_H
 #include "frameekrani.h"
 #include "framepanel.h"
+#include "butonlar.h"
 #include <QDialog>
 #include <QTimer>
 #include <vector>
@@ -32,6 +33,7 @@ private slots:
 private:
     Ui::DosyaAcma *ui;
     FrameEkrani *frameEkrani;
+    Butonlar *butonlar;
     FramePanel *framePanel;
     std::vector<std::vector<bool>> frames;
     int currentFrameIndex = 0;

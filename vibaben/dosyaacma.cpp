@@ -110,9 +110,11 @@ void DosyaAcma::on_pushButton_clicked()
         frameStrs.push_back(s);
     }
 
-    framePanel = new FramePanel(frameStrs, this);
-    framePanel->show();
-    framePanel->startCrcAnimation();
+    // framePanel = new FramePanel(frameStrs, this);
+    // framePanel->show();
+    // framePanel->startCrcAnimation();
+    butonlar = new Butonlar(frameStrs, this);
+    butonlar->show();
 }
 
 std::vector<bool> readFileAsBits(const QString& path) {
