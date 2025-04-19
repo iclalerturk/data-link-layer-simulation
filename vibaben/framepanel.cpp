@@ -87,11 +87,7 @@ void FramePanel::nextStep() {
         QString crc = QString::fromStdString(data.substr(data.size() - 16));
         crcResultLabel->setText("CRC: " + crc);
 
-        // CRC tablo penceresini aç
-        crcTablo = new CrcTablo(frames, this);
-        this->hide();
-        crcTablo->show();
-        return;
+
     }
 
     if (data[step] == '1') {

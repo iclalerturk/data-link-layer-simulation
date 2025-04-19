@@ -7,6 +7,9 @@
 
 // ❗️Forward declaration (çift taraflı bağımlılığı kırar)
 class FramePanel;
+class CrcTablo;
+class Checksum;
+
 
 namespace Ui {
 class Butonlar;
@@ -23,9 +26,16 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::Butonlar *ui;
     FramePanel *framePanel;
+    CrcTablo *crcTablo;
+    Checksum* checksum;
+
     std::vector<std::string> frames;  // tüm frameler (tablo için)
 };
 
