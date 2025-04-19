@@ -14,6 +14,8 @@ FrameEkrani::FrameEkrani(const std::vector<std::string>& frames, QWidget *parent
     ui->setupUi(this);
     this->setFixedSize(1024, 600);
 
+#include <bitset>  // bunu unutma
+
     std::string generator = "10001000000100001";
     for (int i = 0; i < frames.size(); ++i) {
         std::string data = frames[i] + std::string(16, '0');
@@ -29,7 +31,12 @@ FrameEkrani::FrameEkrani(const std::vector<std::string>& frames, QWidget *parent
 
         QString fullFrame = QString::fromStdString(frames[i]);
         frameList.append(fullFrame);
+
+        std::bitset<16> binaryHeader(i);
+        header.push_back(binaryHeader.to_string());
+
     }
+
 
     std::bitset<8> checksumBits;
     for (const std::string& crcStr : crcList) {
@@ -118,15 +125,18 @@ void FrameEkrani::gonderFrame() {
         dataLabel->show();
         trailerLabel->show();
 
-        QString style = "background-color: white; border: 2px solid #333; border-radius: 10px; padding: 5px;";
+        QString style = "background-color: white; border: 2px solid #333; border-radius: 10px; padding: 5px; color:black;";
         headerLabel->setStyleSheet(style);
         dataLabel->setStyleSheet(style);
         trailerLabel->setStyleSheet(style);
 
         dataLabel->setText("📦 " + frameList[currentFrameIndex]);
 
+        QString headerText = QString::fromStdString(header[currentFrameIndex]);
+        headerLabel->setText("🔢 Header\n" + headerText);
         // Trailer içine CRC yaz
         QString crcText = QString::fromStdString(crcList[currentFrameIndex]);
+
         crcIcerik->setText("CRC:\n" + crcText);
         crcIcerik->show();
 

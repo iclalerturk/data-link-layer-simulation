@@ -39,7 +39,7 @@ private:
     QLabel *trailerLabel;
     QLabel *checksumHexLabel;
     QLabel* crcIcerik;
-
+    QString crcText;
 
     // Animasyonlar
     QPropertyAnimation *headerAnim;
@@ -55,6 +55,7 @@ private:
     std::vector<std::string> crcList;
     QStringList frameList;
     std::vector<QLabel*> crcLabels;
+    std::vector<std::string> header; // & işareti kalktı
 
     // Durumlar
     QString hexChecksum;
