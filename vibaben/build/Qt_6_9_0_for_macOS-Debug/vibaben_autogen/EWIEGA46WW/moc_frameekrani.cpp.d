@@ -592,7 +592,6 @@
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/bit \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/bitset \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cctype \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono \
@@ -687,9 +686,7 @@
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/qos.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/time.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdarg.h \
-  /Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QPropertyAnimation \
-  /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QStringList \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QTimer \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q17memory.h \
   /Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q20functional.h \

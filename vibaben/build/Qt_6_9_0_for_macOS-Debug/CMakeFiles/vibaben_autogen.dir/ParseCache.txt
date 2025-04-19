@@ -594,7 +594,6 @@
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/bit
- mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/bitset
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cctype
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono
@@ -691,10 +690,8 @@
  mdp:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdarg.h
  mdp:/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/moc_predefs.h
  mdp:/Users/seymabasaran/Documents/GitHub/Viba/vibaben/butonlar.h
- mdp:/Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.h
  mdp:/Users/seymabasaran/Documents/GitHub/Viba/vibaben/frameekrani.h
  mdp:/Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QPropertyAnimation
- mdp:/Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QStringList
  mdp:/Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QTimer
  mdp:/Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q17memory.h
  mdp:/Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q20functional.h
@@ -1469,7 +1466,6 @@
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/bit
- mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/bitset
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cctype
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono
@@ -1565,10 +1561,8 @@
  mdp:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/time.h
  mdp:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdarg.h
  mdp:/Users/seymabasaran/Documents/GitHub/Viba/vibaben/build/Qt_6_9_0_for_macOS-Debug/vibaben_autogen/moc_predefs.h
- mdp:/Users/seymabasaran/Documents/GitHub/Viba/vibaben/checksum.h
  mdp:/Users/seymabasaran/Documents/GitHub/Viba/vibaben/frameekrani.h
  mdp:/Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QPropertyAnimation
- mdp:/Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QStringList
  mdp:/Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QTimer
  mdp:/Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q17memory.h
  mdp:/Users/seymabasaran/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/q20functional.h

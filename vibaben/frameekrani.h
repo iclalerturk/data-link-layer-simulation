@@ -9,9 +9,6 @@
 #include <vector>
 #include <string>
 
-// ✅ Checksum fonksiyonu için ekleme:
-#include "checksum.h"
-
 namespace Ui {
 class FrameEkrani;
 }
@@ -31,25 +28,37 @@ private slots:
 
 private:
     Ui::FrameEkrani *ui;
+
+    // Görsel öğeler
     QLabel *gondericiKutusu;
     QLabel *aliciKutusu;
     QLabel *mektup;
     QLabel *durumEtiketi;
-    QPushButton *gonderButonu;
     QLabel *headerLabel;
     QLabel *dataLabel;
     QLabel *trailerLabel;
+    QLabel *checksumHexLabel;
+    QLabel* crcIcerik;
 
+
+    // Animasyonlar
     QPropertyAnimation *headerAnim;
     QPropertyAnimation *dataAnim;
     QPropertyAnimation *trailerAnim;
-
-    QTimer *ackTimer;
     QPropertyAnimation *animasyon;
-    std::vector<std::string> frameList;
-    std::vector<std::string> crcList;
 
-    bool ackGeldi;
+    // Kontrol
+    QTimer *ackTimer;
+    QPushButton *gonderButonu;
+
+    // Frame içeriği
+    std::vector<std::string> crcList;
+    QStringList frameList;
+    std::vector<QLabel*> crcLabels;
+
+    // Durumlar
+    QString hexChecksum;
+    int currentFrameIndex;
 };
 
 #endif // FRAMEEKRANI_H
