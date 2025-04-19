@@ -2,30 +2,65 @@
 #include "ui_checksum.h"
 #include <bitset>
 #include <QPropertyAnimation>
+#include <QPalette>
+#include <QTimer>
+
 Checksum::Checksum(const std::vector<std::string>& frames, const std::vector<std::string>& crcList, QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::Checksum)
 {
     ui->setupUi(this);
+
+    // Arka plan rengi (sayfa)
+    this->setObjectName("ChecksumDialog");
+    this->setStyleSheet("QDialog#ChecksumDialog { background-color: #e3f2fd; }");
+
+    // Üst başlık label
     ui->label->setStyleSheet(
         "QLabel {"
-        "background-color: #1746A2;"     // Açık sarı (isteğe göre değiştirilebilir)
-        "border-radius: 20px;"           // Köşeleri yumuşatır
-        "padding: 8px 12px;"             // İç boşluk
-        "color: #ffffff;"                // Yazı rengi (uyumlu bir kahverengi tonu)
-        // Eğik yazı (mizahi alt yazı gibi)
+        "background-color: #1746A2;"
+        "border-radius: 20px;"
+        "padding: 8px 12px;"
+        "color: white;"
+        "font-size: 16px;"
         "}"
         );
-    // CRC'leri QStringList'e dönüştür
+
+    // Adım açıklama yazısı
+    ui->labelStep->setStyleSheet(
+        "color: black;"
+        "font-size: 14px;"
+        "font-weight: bold;"
+        );
+
+    // Hex sonucu
+    ui->labelHex->setStyleSheet(
+        "color: black; font-weight: bold; font-size: 16px;"
+        );
+
+    // Liste görünümü
+    ui->listWidget->setStyleSheet(
+        "QListWidget {"
+        " background-color: white;"
+        " color: black;"
+        " font-size: 13px;"
+        " border-radius: 10px;"
+        " padding: 6px;"
+        "}"
+        "QListWidget::item:selected {"
+        " background-color: #bbdefb;"
+        " color: black;"
+        "}"
+        );
+
+    // CRC verilerini listele
     for (const auto& crc : crcList)
         crcQStringList.append(QString::fromStdString(crc));
 
-    // CRC'leri arayüzde listele
     for (const QString& crc : crcQStringList)
         ui->listWidget->addItem("CRC: " + crc);
 
     startChecksumAnimation();
-
 }
 
 Checksum::~Checksum()
@@ -37,26 +72,20 @@ void Checksum::startChecksumAnimation()
 {
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Checksum::calculateStep);
-    timer->start(1000);  // Her saniyede bir adım
+    timer->start(1000);  // 1 saniyede bir adım
 }
 
 void Checksum::calculateStep()
 {
     if (currentIndex < crcQStringList.size()) {
-        // CRC string'ini al ve binary'ye dönüştür
         std::string crcStr = crcQStringList[currentIndex].toStdString();
-
-        // CRC'yi 16 bitlik bir bitset'e dönüştür
         std::bitset<16> b(crcStr);
 
-        // İlk 8 bit ve son 8 bit parçalara ayır
-        std::bitset<8> highByte(b.to_ulong() >> 8); // İlk 8 bit
-        std::bitset<8> lowByte(b.to_ulong() & 0xFF); // Son 8 bit
+        std::bitset<8> highByte(b.to_ulong() >> 8);
+        std::bitset<8> lowByte(b.to_ulong() & 0xFF);
 
-        // Her iki byte'ı toplama işlemi ve toplamı 8 bitlik yapmak için & 0xFF
         checksumBits = std::bitset<8>((checksumBits.to_ulong() + highByte.to_ulong() + lowByte.to_ulong()) & 0xFF);
 
-        // Ekranda adım bilgisini göster
         ui->labelStep->setText(
             QString("Adım %1: + %2 + %3 → Toplam: %4")
                 .arg(currentIndex + 1)
@@ -65,33 +94,36 @@ void Checksum::calculateStep()
                 .arg(QString::fromStdString(checksumBits.to_string()))
             );
 
-        // Görsel efekt (isteğe bağlı)
-        // Stil animasyonu için renk değişimi
-        QPalette palette = ui->labelStep->palette();
-        QColor startColor = QColor("#1746A2");  // Başlangıç rengi (mevcut mavi ton)
-        QColor endColor = QColor("#FFE162");   // Açık sarı veya başka hoş bir ton
+        // Animasyon sadece arka plan rengi için çalışacak
+        QColor startColor = QColor("#e3f2fd");
+        QColor endColor = QColor("#e3f2fd");
+        QString baseStyle = "color: black; font-weight: bold; font-size: 14px;";
 
-        // Arka plan rengini animasyonla değiştir
-        QPropertyAnimation* colorAnim = new QPropertyAnimation(ui->labelStep, "styleSheet");
-        colorAnim->setDuration(500); // 0.5 saniye
-        colorAnim->setStartValue("background-color: " + startColor.name() + ";");
-        colorAnim->setEndValue("background-color: " + endColor.name() + ";");
+        QPropertyAnimation* colorAnim = new QPropertyAnimation(this, "dummyProperty");
+        colorAnim->setDuration(500);
+        colorAnim->setStartValue(0.0);
+        colorAnim->setEndValue(1.0);
         colorAnim->setEasingCurve(QEasingCurve::InOutQuad);
 
+        connect(colorAnim, &QPropertyAnimation::valueChanged, [=](const QVariant &value) {
+            QColor mixed;
+            mixed.setRedF(startColor.redF() + (endColor.redF() - startColor.redF()) * value.toReal());
+            mixed.setGreenF(startColor.greenF() + (endColor.greenF() - startColor.greenF()) * value.toReal());
+            mixed.setBlueF(startColor.blueF() + (endColor.blueF() - startColor.blueF()) * value.toReal());
+
+            ui->labelStep->setStyleSheet(
+                QString("background-color: %1; %2").arg(mixed.name()).arg(baseStyle)
+                );
+        });
+
         connect(colorAnim, &QPropertyAnimation::finished, [=]() {
-            // Animasyon bitince eski stile dön
-            ui->labelStep->setStyleSheet("background-color: " + startColor.name() + ";");
-            colorAnim->deleteLater(); // Bellek sızıntısını önle
+            ui->labelStep->setStyleSheet(
+                QString("background-color: %1; %2").arg(startColor.name()).arg(baseStyle)
+                );
+            colorAnim->deleteLater();
         });
 
         colorAnim->start();
-
-        timer->start(100); // Her 100ms'de bir adım
-        QTimer::singleShot(50, [=]() {
-            ui->labelStep->setStyleSheet("");
-        });
-
-
         currentIndex++;
     } else {
         timer->stop();
@@ -100,7 +132,7 @@ void Checksum::calculateStep()
     }
 }
 
-// C++-style Hex dönüşümü
+// Hex dönüşüm
 std::string Checksum::toHex(unsigned long value)
 {
     std::string hex = "";
@@ -111,7 +143,6 @@ std::string Checksum::toHex(unsigned long value)
     return hex;
 }
 
-// Qt-style Hex dönüşümü (isteğe bağlı)
 QString Checksum::toHexQt(quint32 value)
 {
     return QString::number(value, 16).toUpper().rightJustified(8, '0');

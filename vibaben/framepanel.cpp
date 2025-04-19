@@ -14,7 +14,8 @@ FramePanel::FramePanel(const std::vector<std::string>& allFrames, QWidget *paren
     ui->setupUi(this);
 
     // Arka plan rengi - soft mavi
-    this->setStyleSheet("background-color: #e3f2fd;");
+    this->setObjectName("FramePanel");
+    this->setStyleSheet("QDialog#FramePanel { background-color: #e3f2fd; }");
 
     // Ana layout
     QVBoxLayout* layout = new QVBoxLayout(this);
