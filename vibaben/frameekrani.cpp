@@ -57,17 +57,17 @@ FrameEkrani::FrameEkrani(const std::vector<std::string>& frames, QWidget *parent
     int endX = 800;
 
     headerLabel = new QLabel(" Header", this);
-    headerLabel->setGeometry(startX, yOrta, 150, 40);
+    headerLabel->setGeometry(startX, yOrta, 150, 50);
     headerLabel->setAlignment(Qt::AlignCenter);
     headerLabel->hide();
 
     dataLabel = new QLabel(this);
-    dataLabel->setGeometry(startX, yOrta + 60, 150, 40);
+    dataLabel->setGeometry(startX, yOrta + 60, 150, 50);
     dataLabel->setAlignment(Qt::AlignCenter);
     dataLabel->hide();
 
     trailerLabel = new QLabel("🔚 Trailer", this);
-    trailerLabel->setGeometry(startX, yOrta + 120, 150, 40);
+    trailerLabel->setGeometry(startX, yOrta + 120, 150, 50);
     trailerLabel->setAlignment(Qt::AlignCenter);
     trailerLabel->hide();
 
