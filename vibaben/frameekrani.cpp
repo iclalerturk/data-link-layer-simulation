@@ -56,7 +56,7 @@ FrameEkrani::FrameEkrani(const std::vector<std::string>& frames, QWidget *parent
     int startX = 60;
     int endX = 800;
 
-    headerLabel = new QLabel("🔢 Header", this);
+    headerLabel = new QLabel(" Header", this);
     headerLabel->setGeometry(startX, yOrta, 150, 40);
     headerLabel->setAlignment(Qt::AlignCenter);
     headerLabel->hide();
@@ -110,10 +110,47 @@ FrameEkrani::FrameEkrani(const std::vector<std::string>& frames, QWidget *parent
 
     ackTimer = new QTimer(this);
     connect(ackTimer, &QTimer::timeout, this, &FrameEkrani::kontrolEt);
+
+    stuffingLabel = new QLabel(this);
+    stuffingLabel->setGeometry(60, 400, 400, 60); // uygun bir yere yerleştir
+    stuffingLabel->setStyleSheet("background-color:#F4F4F4; border:1px solid gray; font-size:10px; color:#333;");
+    stuffingLabel->setWordWrap(true);
+    stuffingLabel->hide(); // başta gizli
+
 }
+
+
 
 FrameEkrani::~FrameEkrani() {
     delete ui;
+}
+
+// Byte Stuffing
+std::string FrameEkrani::applyByteStuffing(const std::string& rawData) {
+    std::string stuffed;
+    for (unsigned char ch : rawData) {
+        if (ch == 0x7E || ch == 0x7D) {
+            stuffed += 0x7D;
+            stuffed += ch ^ 0x20;
+        } else {
+            stuffed += ch;
+        }
+    }
+    return stuffed;
+}
+
+// Byte Unstuffing
+std::string FrameEkrani::removeByteStuffing(const std::string& stuffedData) {
+    std::string unstuffed;
+    for (size_t i = 0; i < stuffedData.size(); ++i) {
+        if (stuffedData[i] == 0x7D && i + 1 < stuffedData.size()) {
+            unstuffed += stuffedData[i + 1] ^ 0x20;
+            i++;
+        } else {
+            unstuffed += stuffedData[i];
+        }
+    }
+    return unstuffed;
 }
 
 void FrameEkrani::gonderFrame() {
@@ -136,7 +173,22 @@ void FrameEkrani::gonderFrame() {
         dataLabel->setStyleSheet(style);
         trailerLabel->setStyleSheet(style);
 
-        dataLabel->setText("📦 " + frameList[currentFrameIndex]);
+        // Frame parçaları birleştir
+        std::string rawData = header[currentFrameIndex] + frameList[currentFrameIndex].toStdString() + crcList[currentFrameIndex];
+        std::string stuffedData = applyByteStuffing(rawData);
+
+        // Gösterilecek string hazırla
+        QString stuffedStr;
+        stuffedStr.clear(); // eğer önceden doldurulmuşsa sıfırla
+
+        for (unsigned char c : stuffedData) {
+            stuffedStr += QString::fromStdString(std::bitset<8>(c).to_string()) + "";
+
+        }
+
+
+        dataLabel->setText("📦 Stuffed Data:\n" + stuffedStr);
+
 
         QString headerText = QString::fromStdString(header[currentFrameIndex]);
         headerLabel->setText(" Header\n" + headerText);
@@ -145,6 +197,12 @@ void FrameEkrani::gonderFrame() {
 
         crcIcerik->setText("CRC:\n" + crcText);
         crcIcerik->show();
+        // Frame parça birleşimi (header + data + crc)
+        std::string fullFrameRaw = header[currentFrameIndex] + frameList[currentFrameIndex].toStdString() + crcList[currentFrameIndex];
+
+        // Byte Stuffing uygula
+        std::string stuffedFrame = applyByteStuffing(fullFrameRaw);
+
 
         durumEtiketi->setText(QString("📤 Frame %1 gönderiliyor...").arg(currentFrameIndex + 1));
 
