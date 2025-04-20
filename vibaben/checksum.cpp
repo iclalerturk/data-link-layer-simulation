@@ -72,7 +72,7 @@ void Checksum::startChecksumAnimation()
 {
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Checksum::calculateStep);
-    timer->start(1000);  // 1 saniyede bir adım
+    timer->start(100);  // 1 saniyede bir adım
 }
 
 void Checksum::calculateStep()
