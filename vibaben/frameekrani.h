@@ -20,11 +20,16 @@ class FrameEkrani : public QDialog
 public:
     explicit FrameEkrani(const std::vector<std::string>& frames, QWidget *parent = nullptr);
     ~FrameEkrani();
+    // Byte Stuffing fonksiyonları
+    std::string applyByteStuffing(const std::string& rawData);
+    std::string removeByteStuffing(const std::string& stuffedData);
+
 
 private slots:
     void gonderFrame();
     void frameIlerle();
     void kontrolEt();
+
 
 private:
     Ui::FrameEkrani *ui;
@@ -40,6 +45,7 @@ private:
     QLabel *checksumHexLabel;
     QLabel *crcIcerik;
     QLabel* ackSinyali;
+    QLabel* stuffingLabel;
     QString crcText;
 
     // Animasyonlar
