@@ -23,6 +23,8 @@ public:
     // Byte Stuffing fonksiyonları
     std::string applyByteStuffing(const std::string& rawData);
     std::string removeByteStuffing(const std::string& stuffedData);
+    std::string extractDataFromUnstuffed(const std::string& unstuffedFrame, int headerLength, int crcLength);
+    std::string calculateCRC(const std::string& binaryData);
 
 
 private slots:
