@@ -25,7 +25,7 @@ FramePanel::FramePanel(const std::vector<std::string>& allFrames, Butonlar* prev
     layout->setSpacing(15);
 
     // Frame verisini gösteren etiket
-    frameLabel = new QLabel(QString::fromStdString("Frame: " + frameBits));
+    frameLabel = new QLabel(QString::fromStdString("100 bitlik veri: " + frameBits));
     frameLabel->setStyleSheet("font-weight: bold; font-size: 16px; color: #0d47a1; padding: 4px;");
     layout->addWidget(frameLabel);
 

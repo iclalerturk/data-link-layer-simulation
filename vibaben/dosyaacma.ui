@@ -569,8 +569,8 @@ Başla</string>
     </font>
    </property>
    <property name="text">
-    <string>Veriyi
-Framelere Böl</string>
+    <string>Veriyi 100 Bitlik
+Parçalara Böl</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelFrame">
@@ -638,7 +638,7 @@ Framelere Böl</string>
     <rect>
      <x>40</x>
      <y>160</y>
-     <width>131</width>
+     <width>221</width>
      <height>31</height>
     </rect>
    </property>
@@ -648,7 +648,7 @@ Framelere Böl</string>
     </font>
    </property>
    <property name="text">
-    <string>Frame Sayısı</string>
+    <string>Oluşturulan Parça Sayısı</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -666,7 +666,7 @@ Framelere Böl</string>
     </font>
    </property>
    <property name="text">
-    <string>Oluşturulan Frameler</string>
+    <string>Oluşturulan Parçalar</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelAnaVeri">
@@ -678,8 +678,14 @@ Framelere Böl</string>
      <height>321</height>
     </rect>
    </property>
+   <property name="frameShape">
+    <enum>QFrame::Shape::Box</enum>
+   </property>
+   <property name="lineWidth">
+    <number>5</number>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
    <property name="wordWrap">
     <bool>true</bool>

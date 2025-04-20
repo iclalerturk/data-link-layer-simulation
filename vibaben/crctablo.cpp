@@ -25,7 +25,7 @@ CrcTablo::CrcTablo(const std::vector<std::string>& frames, QWidget *parent)
     // Tablomuzu oluşturalım
     table = new QTableWidget(this);
     table->setColumnCount(2);
-    table->setHorizontalHeaderLabels(QStringList() << "Frame" << "CRC");
+    table->setHorizontalHeaderLabels(QStringList() << "Veri Parçası" << "CRC");
 
     // Başlık stilleri
     table->horizontalHeader()->setStyleSheet(
