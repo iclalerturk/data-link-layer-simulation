@@ -1,0 +1,26 @@
+{
+	"BUILD_DIR" : "C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/uygulama_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/iclal/Documents/GitHub/Viba/uygulama",
+	"CMAKE_SOURCE_DIR" : "C:/Users/iclal/Documents/GitHub/Viba/uygulama",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Ninja",
+	"INCLUDE_DIR" : "C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/uygulama_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/iclal/Documents/GitHub/Viba/uygulama/images/mektup.png",
+		"C:/Users/iclal/Documents/GitHub/Viba/uygulama/images/postaci.png"
+	],
+	"LOCK_FILE" : "C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/uygulama_autogen.dir/AutoRcc_images_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "images" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_images.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.9.0/mingw_64/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/uygulama_autogen.dir/AutoRcc_images_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Users/iclal/Documents/GitHub/Viba/uygulama/images.qrc",
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

@@ -1,0 +1,19 @@
+# ninja log v6
+5	137	7668656211847302	C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/cmake.verify_globs	233d90fae515dc49
+140	1100	7668656222149281	uygulama_autogen/timestamp	55c8d4ad0cf52e2
+140	1100	7668656222149281	uygulama_autogen/mocs_compilation.cpp	55c8d4ad0cf52e2
+140	1100	7668656222149281	C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/uygulama_autogen/timestamp	55c8d4ad0cf52e2
+140	1100	7668656222149281	C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/uygulama_autogen/mocs_compilation.cpp	55c8d4ad0cf52e2
+1105	1178	7668656223470207	uygulama_autogen/EWIEGA46WW/qrc_images.cpp	b94ce5def9382ee1
+1105	1178	7668656223470207	C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/uygulama_autogen/EWIEGA46WW/qrc_images.cpp	b94ce5def9382ee1
+1216	1648	7668656223951896	CMakeFiles/uygulama.dir/uygulama_autogen/EWIEGA46WW/qrc_images.cpp.obj	47d1f579f8184921
+1181	3742	7668656223606711	CMakeFiles/uygulama.dir/main.cpp.obj	cb499ad1fc066eab
+1184	3991	7668656223642624	CMakeFiles/uygulama.dir/mainwindow.cpp.obj	b77d3878a69614e2
+1178	4054	7668656223560009	CMakeFiles/uygulama.dir/uygulama_autogen/mocs_compilation.cpp.obj	f649f221df0e8160
+1212	4111	7668656223921626	CMakeFiles/uygulama.dir/butonlar.cpp.obj	e8627adc137f7cd6
+1197	4166	7668656223765980	CMakeFiles/uygulama.dir/framepanel.cpp.obj	9a8f354aac2376a
+1201	4236	7668656223786208	CMakeFiles/uygulama.dir/crctablo.cpp.obj	611181efb591285e
+1207	4337	7668656223850050	CMakeFiles/uygulama.dir/checksum.cpp.obj	ee3eb2714a1fbf1f
+1189	4553	7668656223667724	CMakeFiles/uygulama.dir/frameekrani.cpp.obj	80fe4acf9add3a44
+1194	5070	7668656223703601	CMakeFiles/uygulama.dir/dosyaacma.cpp.obj	804332d4d46e6bf7
+5071	5227	7668656262508956	uygulama.exe	da97b54a80eb58d0

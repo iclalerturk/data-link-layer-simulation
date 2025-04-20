@@ -1,0 +1,9 @@
+C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/uygulama.dir
+C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/edit_cache.dir
+C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/rebuild_cache.dir
+C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/list_install_components.dir
+C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/install.dir
+C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/install/local.dir
+C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/install/strip.dir
+C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/uygulama_autogen_timestamp_deps.dir
+C:/Users/iclal/Documents/GitHub/Viba/uygulama/build/Desktop_Qt_6_9_0_MinGW_64_bit-release/CMakeFiles/uygulama_autogen.dir
