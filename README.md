@@ -1,4 +1,4 @@
-#Data Link Simulation
+<b>#Data Link Simulation</b>
 This project simulates basic functionalities of the Data Link Layer (Layer 2) of the OSI model.<br>
 It is developed in C++ and includes a graphical user interface (GUI).<br><br>
 
